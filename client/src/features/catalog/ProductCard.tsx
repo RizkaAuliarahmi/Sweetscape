@@ -37,6 +37,7 @@ export default function ProductCard({product}: Props) {
                 '.MuiImageListItemBar-subtitle': {
                   fontSize: '1rem',
                 },
+                '&:hover': {color: 'primary.main'}
               }}
             />
           </ImageListItem>
