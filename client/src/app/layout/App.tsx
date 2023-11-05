@@ -8,6 +8,7 @@ import LoadingComponent from "./LoadingComponent";
 import { useAppDispatch } from "../store/ConfigureStore";
 import { fetchBasketAsync } from "../../features/basket/basketSlice";
 import { fetchCurrentUser } from "../../features/account/accountSlice";
+import Footer from "./Footer";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -64,6 +65,7 @@ if (loading) return <LoadingComponent message="Initializing app..." />
       <Container>
         <Outlet />
       </Container>
+      <Footer/>
     </ThemeProvider>
   );
 }
