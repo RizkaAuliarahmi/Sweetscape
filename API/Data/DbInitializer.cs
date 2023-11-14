@@ -12,8 +12,8 @@ namespace API.Data
             {
                 var user = new User
                 {
-                    UserName = "bob",
-                    Email = "bob@test.com"
+                    UserName = "aurilia",
+                    Email = "aurilia@test.com"
                 };
 
                 await userManager.CreateAsync(user, "Pa$$w0rd");
@@ -28,6 +28,7 @@ namespace API.Data
                 await userManager.CreateAsync(admin, "Pa$$w0rd");
                 await userManager.AddToRolesAsync(admin, new[] {"Member","Admin"});
             }
+
             //check to see if there any product in database. if there we dont execute code
             if (context.Products.Any()) return;
 
@@ -41,7 +42,8 @@ namespace API.Data
                     Price = 24000,
                     PictureUrl = "/images/products/cupcake (2).jpg",
                     Type = "Cupcake",
-                    QuantityInStock = 33
+                    QuantityInStock = 33,
+                    Date = "2022-10-27"
                 },
                 new Product
                 {
@@ -50,7 +52,18 @@ namespace API.Data
                     Price = 32000,
                     PictureUrl = "/images/products/cupcake (1).jpg",
                     Type = "Cupcake",
-                    QuantityInStock = 28
+                    QuantityInStock = 28,
+                    Date = "2022-10-27"
+                },
+                new Product
+                {
+                    Name = "Strawberry Cupcake",
+                    Description = "Savor the sweet and delightful taste of our Strawberry Cupcake, a treat that's full of berry goodness.",
+                    Price = 32000,
+                    PictureUrl = "/images/products/cupcake (3).jpg",
+                    Type = "Cupcake",
+                    QuantityInStock = 28,
+                    Date = "2023-10-27"
                 },
                 new Product
                 {
@@ -60,7 +73,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (8).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 		        new Product
                 {
@@ -70,7 +84,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (10).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 		        new Product
                 {
@@ -80,7 +95,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (5).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 		        new Product
                 {
@@ -90,7 +106,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (4).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 		        new Product
                 {
@@ -100,7 +117,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (2).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 	        	new Product
                 {
@@ -110,7 +128,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (7).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 	        	new Product
                 {
@@ -120,7 +139,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (6).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 	        	new Product
                 {
@@ -130,7 +150,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (1).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 	        	new Product
                 {
@@ -140,7 +161,8 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (3).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
                 },
 		        new Product
                 {
@@ -150,7 +172,19 @@ namespace API.Data
                     Price = 10000,
                     PictureUrl = "/images/products/donut (9).jpg",
                     Type = "Donut",
-                    QuantityInStock = 100
+                    QuantityInStock = 100,
+                    Date = "2022-10-27"
+                },
+                new Product
+                {
+                    Name = "Strawberry Donut",
+                    Description =
+                        "Savor the deliciousness of our Strawberry Donut – it's a sweet treat that'll make your taste buds happy",
+                    Price = 10000,
+                    PictureUrl = "/images/products/donut (11).jpg",
+                    Type = "Donut",
+                    QuantityInStock = 100,
+                    Date = "2023-10-27"
                 },
                 new Product
                 {
@@ -160,7 +194,8 @@ namespace API.Data
                     Price = 154000,
                     PictureUrl = "/images/products/macaroon (1).jpg",
                     Type = "Macaroon",
-                    QuantityInStock = 20
+                    QuantityInStock = 20,
+                    Date = "2022-10-27"
                 },
                 new Product
                 {
@@ -170,7 +205,19 @@ namespace API.Data
                     Price = 59000,
                     PictureUrl = "/images/products/macaroon (2).jpg",
                     Type = "Macaroon",
-                    QuantityInStock = 16
+                    QuantityInStock = 16,
+                    Date = "2022-10-27"
+                },
+                new Product
+                {
+                    Name = "Strawberry Mini Macaroon",
+                    Description =
+                        "Enjoy the tasty mix of strawberry and almond in our Strawberry Mini Macaroon.",
+                    Price = 200000,
+                    PictureUrl = "/images/products/macaroon (3).jpg",
+                    Type = "Macaroon",
+                    QuantityInStock = 19,
+                    Date = "2023-10-27"
                 },
                 new Product
                 {
@@ -180,7 +227,8 @@ namespace API.Data
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (2).jpg",
                     Type = "Slice Cake",
-                    QuantityInStock = 84
+                    QuantityInStock = 84,
+                    Date = "2023-10-27"
                 },
                 new Product
                 {
@@ -190,7 +238,8 @@ namespace API.Data
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (3).jpg",
                     Type = "Slice Cake",
-                    QuantityInStock = 84
+                    QuantityInStock = 84,
+                    Date = "2022-10-27"
                 },
                 new Product
                 {
@@ -199,7 +248,8 @@ namespace API.Data
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (1).jpg",
                     Type = "Slice Cake",
-                    QuantityInStock = 84
+                    QuantityInStock = 84,
+                    Date = "2022-10-27"
                 },
                 new Product
                 {
@@ -209,7 +259,19 @@ namespace API.Data
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (4).jpg",
                     Type = "Slice Cake",
-                    QuantityInStock = 84
+                    QuantityInStock = 84,
+                    Date = "2022-10-27"
+                },
+                new Product
+                {
+                    Name = "Choco Cherry Slice Cake",
+                    Description =
+                        "Indulge in the rich and delightful taste of our Chocolate, Cherry, and Cheese Cream Slice Cake.",
+                    Price = 40000,
+                    PictureUrl = "/images/products/slice cake (5).jpg",
+                    Type = "Slice Cake",
+                    QuantityInStock = 84,
+                    Date = "2022-10-27"
                 },
             };
             

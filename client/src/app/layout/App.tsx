@@ -44,7 +44,7 @@ function App() {
       typography: {
         allVariants: {
           color: 'black',
-          fontFamily: 'Montserrat',
+          fontFamily: 'Satoshi-Medium',
         },
         body1: {
           fontSize: '1.2rem',
@@ -62,9 +62,9 @@ if (loading) return <LoadingComponent message="Initializing app..." />
       <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
       <CssBaseline/>
       <Header/>
-      <Container>
+      {/* <Container> */}
         <Outlet />
-      </Container>
+      {/* </Container> */}
       <Footer/>
     </ThemeProvider>
   );

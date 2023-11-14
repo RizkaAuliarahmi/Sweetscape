@@ -34,10 +34,10 @@ export default function Header() {
     const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0)
 
     return (
-        <AppBar position='static' sx={{mb: 4}}>
+        <AppBar position='sticky' sx={{boxShadow:'none'}}>
             <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                 
-                <Box display='flex' alignItems='center' component={Link} to={'/'}>
+                <Box display='flex' alignItems='center' component={Link} to={'/'} sx={{ml: 10}}>
                     <img src='/images/logo.png' style={{height: 64, width:'100%'}}/>
                 </Box>
 
@@ -54,7 +54,7 @@ export default function Header() {
                     )}
                 </List>
 
-                <Box display='flex' alignItems='center'>
+                <Box display='flex' alignItems='center' sx={{mr: 10}}>
                     <IconButton component={Link} to='/basket' size='large' edge='start' sx={{mr: 2, '&:hover': {color: 'secondary.main'}}}>
                         <Badge badgeContent={itemCount} color="secondary">
                             <ShoppingCart />

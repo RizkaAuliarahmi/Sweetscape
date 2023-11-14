@@ -3,7 +3,7 @@ import ProductList from "./ProductList";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../app/store/ConfigureStore";
 import { fetchFilters, fetchProductsAsync, productSelector, setPageNumber, setProductParams } from "./catalogSlice";
-import { Grid, Paper } from "@mui/material";
+import { Container, Grid, Paper } from "@mui/material";
 import ProductSearch from "./productSearch";
 import RadioButtonGroup from "../../app/components/RadioButtonGroup";
 import CheckboxButtons from "../../app/components/CheckboxButtons";
@@ -20,6 +20,7 @@ export default function Catalog() {
   const products = useAppSelector(productSelector.selectAll);
   const {productsLoaded, status, filtersLoaded, types, productParams, metaData} = useAppSelector(state => state.catalog);
   const dispatch = useAppDispatch();
+  console.log("catalog"+products);
 
   useEffect(() => {
     if (!productsLoaded) dispatch(fetchProductsAsync());
@@ -32,6 +33,7 @@ export default function Catalog() {
   if (!filtersLoaded) return <LoadingComponent message='Loading Product...'/>
 
     return (
+      <Container sx={{mt: 4}}>
         <Grid container columnSpacing={4}>
           <Grid item xs={3}>
             <Paper sx={{mb: 2}} square={false}>
@@ -64,6 +66,7 @@ export default function Catalog() {
             />}
           </Grid>
         </Grid>
+        </Container>
     )
     //tanda <> same as <Fragment> </Fragment>
 }

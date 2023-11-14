@@ -9,5 +9,8 @@ namespace API.Entities
         public string  PictureUrl { get; set; }
         public string Type { get; set; }
         public int QuantityInStock { get; set; }
+        public string Date { get; set; }
+        // public int ProductCategoryId { get; set; }
+        // public ProductCategory ProductCategory { get; set; }
     }
 }

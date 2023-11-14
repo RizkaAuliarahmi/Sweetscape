@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Typography, Paper, List, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useFormContext, Controller } from "react-hook-form";
-import AppBox from "../../app/components/AppBox";
+import AppBox from "../../app/components/Box";
 
 const paymentMethods = [
   { value: 'cashOnDelivery', label: 'Cash On Delivery' },

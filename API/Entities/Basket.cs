@@ -1,5 +1,3 @@
-using API.DTOs;
-
 namespace API.Entities
 {
     public class Basket
@@ -28,11 +26,6 @@ namespace API.Entities
             if (item == null) return;
             item.Quantity -= quantity;
             if (item.Quantity == 0) Items.Remove(item);
-        }
-
-        public static implicit operator Basket(BasketDto v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

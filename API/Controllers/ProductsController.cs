@@ -49,5 +49,16 @@ namespace API.Controllers
 
             return Ok(new {types});
         }
+
+        [HttpGet("latest")]
+        public async Task<ActionResult<List<Product>>> GetLatestProducts()
+        {
+            var latestProducts = await _context.Products
+                .OrderByDescending(p => p.Date)
+                .Take(4)
+                .ToListAsync();
+
+            return latestProducts;
+        }
     }
 }

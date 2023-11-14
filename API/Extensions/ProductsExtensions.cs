@@ -12,7 +12,7 @@ namespace API.Extensions
             {
                 "price" => query.OrderBy(p => p.Price),
                 "priceDesc" => query.OrderByDescending(p => p.Price),
-                _ => query.OrderBy(p => p.Name)
+                _ => query.OrderBy(p => p.Name),
             };
 
             return query;
@@ -31,7 +31,6 @@ namespace API.Extensions
         {
             var typeList = new List<string>();
 
-            
             if (!string.IsNullOrEmpty(types))
                 typeList.AddRange(types.ToLower().Split(",").ToList());
 
