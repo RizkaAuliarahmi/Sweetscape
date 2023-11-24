@@ -1,32 +1,34 @@
-import { Button, Menu, Fade, MenuItem } from "@mui/material";
+import { Menu, Fade, MenuItem, IconButton } from "@mui/material";
 import { useState } from "react";
 import { signOut } from "../../features/account/accountSlice";
 import { clearBasket } from "../../features/basket/basketSlice";
 import { useAppDispatch, useAppSelector } from "../store/ConfigureStore";
 import { Link } from "react-router-dom";
+import { Person2Rounded } from "@mui/icons-material";
 
 export default function SignedInMenu() {
     const dispatch = useAppDispatch();
     const { user } = useAppSelector(state => state.account);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const username = user?.email.split("@")[0];
 
     return (
         <>
-        <Button 
+        <IconButton 
             color='inherit'
             onClick={handleClick}
-            sx={{ typography: 'h6', '&:hover': {color: 'secondary.main'}, borderRadius: "20px", bgcolor:'secondary.main', textTransform: "none"}}
+            sx={{ typography: 'h6', '&:hover': {color: 'secondary.main'}, }}
         >
-            {username}
-        </Button>
+            <Person2Rounded fontSize="large"/>
+        </IconButton>
         <Menu
             anchorEl={anchorEl}
             open={open}

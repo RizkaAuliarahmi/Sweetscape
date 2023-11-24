@@ -64,16 +64,13 @@ export default function ProductDetails() {
                                 <TableCell>{product.description}</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell>Type</TableCell>
-                                <TableCell>{product.type}</TableCell>
-                            </TableRow>
-                            <TableRow>
                                 <TableCell>Quantity in stock</TableCell>
                                 <TableCell>{product.quantityInStock}</TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
                 </TableContainer>
+                <Divider sx={{mb: 2}}/>
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
                         <TextField

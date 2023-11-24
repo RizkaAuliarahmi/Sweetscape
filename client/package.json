@@ -5,6 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/dancing-script": "^5.0.15",
+    "@fontsource/great-vibes": "^5.0.17",
     "@fontsource/roboto": "^5.0.8",
     "@hookform/resolvers": "^3.3.1",
     "@mui/icons-material": "^5.14.6",
@@ -26,8 +28,6 @@
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
-    "react-swipeable-views": "^0.14.0",
-    "react-swipeable-views-utils": "^0.14.0",
     "react-toastify": "^9.1.3",
     "redux": "^4.2.1",
     "typescript": "^4.9.5",
