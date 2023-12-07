@@ -56,12 +56,12 @@ export default function ProductDetails() {
                     <Table>
                         <TableBody>
                             <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>{product.name}</TableCell>
+                                <TableCell>Allergen Information</TableCell>
+                                <TableCell>{product.allergenInformation}</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell>Description</TableCell>
-                                <TableCell>{product.description}</TableCell>
+                                <TableCell>Shelf Life</TableCell>
+                                <TableCell>{product.shelfLife}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Quantity in stock</TableCell>

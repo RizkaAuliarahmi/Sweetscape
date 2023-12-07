@@ -2,13 +2,12 @@ import { Menu, Fade, MenuItem, IconButton } from "@mui/material";
 import { useState } from "react";
 import { signOut } from "../../features/account/accountSlice";
 import { clearBasket } from "../../features/basket/basketSlice";
-import { useAppDispatch, useAppSelector } from "../store/ConfigureStore";
+import { useAppDispatch } from "../store/ConfigureStore";
 import { Link } from "react-router-dom";
 import { Person2Rounded } from "@mui/icons-material";
 
 export default function SignedInMenu() {
     const dispatch = useAppDispatch();
-    const { user } = useAppSelector(state => state.account);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -22,26 +21,25 @@ export default function SignedInMenu() {
 
     return (
         <>
-        <IconButton 
-            color='inherit'
-            onClick={handleClick}
-            sx={{ typography: 'h6', '&:hover': {color: 'secondary.main'}, }}
-        >
-            <Person2Rounded fontSize="large"/>
-        </IconButton>
-        <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            TransitionComponent={Fade}
-        >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem component={Link} to='/orders'>My orders</MenuItem>
-            <MenuItem onClick={() => {
-                dispatch(signOut());
-                dispatch(clearBasket());
-            }}>Logout</MenuItem>
-        </Menu>
+            <IconButton 
+                color='inherit'
+                onClick={handleClick}
+                sx={{ typography: 'h6', '&:hover': {color: 'secondary.main'}, }}
+            >
+                <Person2Rounded fontSize="large"/>
+            </IconButton>
+            <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+            >
+                <MenuItem component={Link} to='/orders'>My orders</MenuItem>
+                <MenuItem onClick={() => {
+                    dispatch(signOut());
+                    dispatch(clearBasket());
+                }}>Logout</MenuItem>
+            </Menu>
         </>
     );
 }

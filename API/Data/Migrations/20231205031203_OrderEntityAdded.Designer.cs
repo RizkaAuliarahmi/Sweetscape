@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20231120014144_OrderEntityAdded")]
+    [Migration("20231205031203_OrderEntityAdded")]
     partial class OrderEntityAdded
     {
         /// <inheritdoc />
@@ -112,10 +112,10 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Date")
+                    b.Property<string>("AllergenInformation")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Date")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -127,15 +127,40 @@ namespace API.Data.Migrations
                     b.Property<long>("Price")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("ProductCategoryId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ShelfLife")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Type")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProductCategoryId");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("API.Entities.ProductCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategory");
                 });
 
             modelBuilder.Entity("API.Entities.Role", b =>
@@ -462,6 +487,17 @@ namespace API.Data.Migrations
                         });
 
                     b.Navigation("ItemOrdered");
+                });
+
+            modelBuilder.Entity("API.Entities.Product", b =>
+                {
+                    b.HasOne("API.Entities.ProductCategory", "ProductCategory")
+                        .WithMany()
+                        .HasForeignKey("ProductCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductCategory");
                 });
 
             modelBuilder.Entity("API.Entities.UserAddress", b =>

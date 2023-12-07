@@ -65,6 +65,7 @@ const Catalog = {
     details: (id: number) => requests.get(`products/${id}`),
     fetchFilters: () => requests.get('products/filters'),
     latest: () => requests.get('products/latest'),
+    getProductCategories: () => requests.get('products/categories'),
 }
 
 const TestErrors = {

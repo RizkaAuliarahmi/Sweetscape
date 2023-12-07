@@ -19,6 +19,7 @@ namespace API.Controllers
         public async Task<ActionResult<PagedList<Product>>> GetProducts([FromQuery]ProductParams productParams)
         {
             var query = _context.Products
+            .Include(p => p.ProductCategory)
             .Sort(productParams.OrderBy)
             .Search(productParams.SearchTerm)
             .Filter(productParams.Types)
@@ -45,7 +46,7 @@ namespace API.Controllers
         [HttpGet("filters")]
         public async Task<IActionResult> GetFilters()
         {
-            var types = await _context.Products.Select(p => p.Type).Distinct().ToListAsync();
+            var types = await _context.Products.Select(p => p.ProductCategory.Name).Distinct().ToListAsync();
 
             return Ok(new {types});
         }
@@ -60,5 +61,17 @@ namespace API.Controllers
 
             return latestProducts;
         }
+
+        [HttpGet("categories")]
+        public async Task<ActionResult<List<ProductCategory>>> GetProductCategories()
+        {
+            var productCategories = await _context.Products
+                .Select(p => p.ProductCategory)
+                .Distinct()  // Untuk menghilangkan duplikat (jika ada)
+                .ToListAsync();
+
+            return productCategories;
+        }
+
     }
 }

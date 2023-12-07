@@ -1,7 +1,7 @@
 import { Container, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import Header from "./Header";
 import { useCallback, useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingComponent from "./LoadingComponent";
@@ -9,10 +9,13 @@ import { useAppDispatch } from "../store/ConfigureStore";
 import { fetchBasketAsync } from "../../features/basket/basketSlice";
 import { fetchCurrentUser } from "../../features/account/accountSlice";
 import Footer from "./Footer";
+import { ScrollToTop } from "../components/ScrollToTop";
+import HomePage from "../../features/Home/HomePage";
 
 function App() {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   const initApp = useCallback(async () => {
     try {
@@ -31,7 +34,6 @@ function App() {
     palette:{
         primary: {
           main: '#d3979f',
-          // light: '#ffc0cb',
           dark: '#b44b59',
         },
         secondary: {
@@ -60,12 +62,18 @@ if (loading) return <LoadingComponent message="Initializing app..." />
   return (
     <ThemeProvider theme={theme}>
       <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
-      <CssBaseline/>
-      <Header/>
-      {/* <Container> */}
-        <Outlet />
-      {/* </Container> */}
-      <Footer/>
+      <CssBaseline />
+      <Header />
+       {/* Komponen untuk kembali ke atas halaman */}
+       <ScrollToTop />
+      {/* Menampilkan beranda jika path adalah '/' */}
+      {location.pathname === '/' ? <HomePage /> :
+        // Menampilkan outlet (komponen yang sesuai dengan rute)
+        <Container sx={{ mt: 4, mb: 20 }}>
+          <Outlet />
+        </Container>
+      }
+      <Footer />
     </ThemeProvider>
   );
 }

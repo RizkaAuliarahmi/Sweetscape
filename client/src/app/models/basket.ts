@@ -11,5 +11,7 @@ export interface Basket {
     pictureUrl: string;
     type: string;
     quantity: number;
+    productCategoryId: number;
+    productCategoryName: string;
   }
   

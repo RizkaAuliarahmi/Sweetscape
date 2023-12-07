@@ -92,22 +92,17 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "ProductCategory",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    Price = table.Column<long>(type: "INTEGER", nullable: false),
-                    PictureUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    Type = table.Column<string>(type: "TEXT", nullable: true),
-                    QuantityInStock = table.Column<int>(type: "INTEGER", nullable: false),
-                    Date = table.Column<string>(type: "TEXT", nullable: true)
+                    PictureUrl = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_ProductCategory", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -264,6 +259,33 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    AllergenInformation = table.Column<string>(type: "TEXT", nullable: true),
+                    ShelfLife = table.Column<string>(type: "TEXT", nullable: true),
+                    Price = table.Column<long>(type: "INTEGER", nullable: false),
+                    PictureUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    Type = table.Column<string>(type: "TEXT", nullable: true),
+                    QuantityInStock = table.Column<int>(type: "INTEGER", nullable: false),
+                    Date = table.Column<string>(type: "TEXT", nullable: true),
+                    ProductCategoryId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_ProductCategory_ProductCategoryId",
+                        column: x => x.ProductCategoryId,
+                        principalTable: "ProductCategory",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "BasketItems",
                 columns: table => new
                 {
@@ -350,6 +372,11 @@ namespace API.Data.Migrations
                 name: "IX_OrderItem_OrderId",
                 table: "OrderItem",
                 column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_ProductCategoryId",
+                table: "Products",
+                column: "ProductCategoryId");
         }
 
         /// <inheritdoc />
@@ -393,6 +420,9 @@ namespace API.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "ProductCategory");
         }
     }
 }

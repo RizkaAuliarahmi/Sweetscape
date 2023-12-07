@@ -74,56 +74,54 @@ export default function CheckoutPage() {
     };
 
     return (
-        <Container sx={{mt: 4}}>
-            <FormProvider {...methods}>
-                <Paper variant="outlined" sx={{my: {xs: 3, md: 6}, p: {xs: 2, md: 3}}} >
-                    <Typography component="h1" variant="h4" align="center">
-                        Checkout
-                    </Typography>
-                    <Stepper activeStep={activeStep} sx={{pt: 3, pb: 5}}>
-                        {steps.map((label) => (
-                            <Step key={label}>
-                                <StepLabel>{label}</StepLabel>
-                            </Step>
-                        ))}
-                    </Stepper>
-                    <>
-                        {activeStep === steps.length ? (
-                            <>
-                                <Typography variant="h5" gutterBottom>
-                                    Thank you for your order.
-                                </Typography>
-                                <Typography variant="subtitle1">
-                                    Your order number is #{orderNumber}. We have not emailed your order
-                                    confirmation, and will not send you an update when your order has
-                                    shipped as this is a fake store!
-                                </Typography>
-                            </>
-                        ) : (
-                            <form onSubmit={methods.handleSubmit(handleNext)}>
-                                {getStepContent(activeStep)}
-                                <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
-                                    {activeStep !== 0 && (
-                                        <Button onClick={handleBack} sx={{mt: 3, ml: 1, color:"inherit", '&:hover': {
-                                            backgroundColor: '#d3979f', color: '#ffffff'}}}>
-                                            Back
-                                        </Button>
-                                    )}
-                                    <LoadingButton
-                                        loading={loading}
-                                        disabled={!methods.formState.isValid}
-                                        variant="contained"
-                                        type="submit"
-                                        sx={{mt: 3, ml: 1}}
-                                    >
-                                        {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                                    </LoadingButton>
-                                </Box>
-                            </form>
-                        )}
-                    </>
-                </Paper>
-            </FormProvider>
-        </Container>
+        <FormProvider {...methods}>
+            <Paper variant="outlined" sx={{my: {xs: 3, md: 6}, p: {xs: 2, md: 3}}} >
+                <Typography component="h1" variant="h4" align="center">
+                    Checkout
+                </Typography>
+                <Stepper activeStep={activeStep} sx={{pt: 3, pb: 5}}>
+                    {steps.map((label) => (
+                        <Step key={label}>
+                            <StepLabel>{label}</StepLabel>
+                        </Step>
+                    ))}
+                </Stepper>
+                <>
+                    {activeStep === steps.length ? (
+                        <>
+                            <Typography variant="h5" gutterBottom>
+                                Thank you for your order.
+                            </Typography>
+                            <Typography variant="subtitle1">
+                                Your order number is #{orderNumber}. We have not emailed your order
+                                confirmation, and will not send you an update when your order has
+                                shipped as this is a fake store!
+                            </Typography>
+                        </>
+                    ) : (
+                        <form onSubmit={methods.handleSubmit(handleNext)}>
+                            {getStepContent(activeStep)}
+                            <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
+                                {activeStep !== 0 && (
+                                    <Button onClick={handleBack} sx={{mt: 3, ml: 1, color:"inherit", '&:hover': {
+                                        backgroundColor: '#d3979f', color: '#ffffff'}}}>
+                                        Back
+                                    </Button>
+                                )}
+                                <LoadingButton
+                                    loading={loading}
+                                    disabled={!methods.formState.isValid}
+                                    variant="contained"
+                                    type="submit"
+                                    sx={{mt: 3, ml: 1}}
+                                >
+                                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                                </LoadingButton>
+                            </Box>
+                        </form>
+                    )}
+                </>
+            </Paper>
+        </FormProvider>
     );
 }

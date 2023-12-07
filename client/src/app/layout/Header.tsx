@@ -1,13 +1,15 @@
 import { ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Box, IconButton, List, ListItem, Toolbar, Typography } from "@mui/material";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../store/ConfigureStore";
 import SignedInMenu from "./SignedInMenu";
 import { useEffect, useState } from "react";
+import { setProductParams } from "../../features/catalog/catalogSlice";
+import { useDispatch } from "react-redux";
 
 const midLinks = [
     { title: 'catalog', path: '/catalog' },
-    { title: 'about', path: '/about' },
+    { title: 'delivery information', path: '/delivery-information' },
 ];
 
 const rightLinks = [
@@ -33,6 +35,12 @@ export default function Header() {
     const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
     const [showScrollHeader, setShowScrollHeader] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleCatalogClick = () => {
+        dispatch(setProductParams({ types: [] }));
+      };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -50,13 +58,11 @@ export default function Header() {
         if (location.pathname === '/') {
           return {
             display: showScrollHeader ? "block" : "none",
-            zIndex: 1000,
             boxShadow:'none',
           };
         } else if (location.pathname !== '/') {
           return {
-            boxShadow:'none', 
-            zIndex: 1000,
+            boxShadow:'none',
           };
         }
     };
@@ -67,17 +73,19 @@ export default function Header() {
                 <AppBar 
                     position="relative" 
                     sx={{ 
+                        display: 'flex',
                         zIndex: 1000, 
                         boxShadow: 'none', 
                         background: `url('/images/bg-header.png')`, 
-                        backgroundSize: '100%' 
-                        }}
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
                 >
                     <Toolbar 
-                    sx={{ 
-                        display: 'flex', 
-                        flexDirection: 'column', 
-                        alignItems: 'center'
+                        sx={{ 
+                            display: 'flex', 
+                            flexDirection: 'column', 
+                            alignItems: 'center'
                         }}
                     >
                         <Box 
@@ -86,7 +94,7 @@ export default function Header() {
                                 marginLeft: 'auto', 
                                 height: 'fit-content', 
                                 mt: 2 
-                                }}
+                            }}
                         >
                             <IconButton 
                                 component={Link} 
@@ -96,7 +104,7 @@ export default function Header() {
                                 sx={{ 
                                     mr: 2, 
                                     '&:hover': { color: 'secondary.main' } 
-                                    }}
+                                }}
                             >
                                 <Badge badgeContent={itemCount} color="secondary">
                                     <ShoppingCart />
@@ -120,14 +128,13 @@ export default function Header() {
                             )}
                         </Box>
                     </Toolbar>
-
                     <Toolbar 
                         sx={{
                             display: 'flex', 
                             flexDirection: 'column', 
                             alignItems: 'center' 
-                            }}
-                        >
+                        }}
+                    >
                         <Box 
                             display="flex" 
                             component={Link} 
@@ -139,20 +146,20 @@ export default function Header() {
                                 sx={{ 
                                     color: '#fff4e6', 
                                     fontFamily: 'Great Vibes', 
-                                    letterSpacing: 4 
-                                    }}
-                                >
+                                    letterSpacing: 6 
+                                }}
+                            >
                                 Sweetscape
                             </Typography>
                         </Box>
-                        
                         <List sx={{ display: 'flex'}}>
                             {midLinks.map(({ title, path }) => (
                                 <ListItem
                                     component={NavLink}
+                                    onClick={() => handleCatalogClick()}
                                     to={path}
                                     key={path}
-                                    sx={navStyles}
+                                    sx={{...navStyles, whiteSpace: 'nowrap'}}
                                 >
                                     {title.toUpperCase()}
                                 </ListItem>
@@ -161,7 +168,6 @@ export default function Header() {
                     </Toolbar>
                 </AppBar>
             )}
-
             <AppBar 
                 position={location.pathname === '/' ? 'fixed' : 'relative'} 
                 sx={getAppBarStyle()}
@@ -171,7 +177,7 @@ export default function Header() {
                         display: 'flex', 
                         justifyContent: 'space-between', 
                         alignItems: 'center'
-                        }}
+                    }}
                 >
                     <Box 
                         display='flex' 
@@ -183,20 +189,19 @@ export default function Header() {
                             Sweetscape
                         </Typography>
                     </Box>
-
                     <List sx={{ display: 'flex' }}>
                         {midLinks.map(({title, path}) =>
                             <ListItem
                                 component={NavLink}
+                                onClick={() => handleCatalogClick()}
                                 to={path}
                                 key={path}
-                                sx={navStyles}
+                                sx={{...navStyles, whiteSpace: 'nowrap'}}
                             >
                                 {title.toUpperCase()}
                             </ListItem>
                         )}
                     </List>
-
                     <Box display='flex' alignItems='center' sx={{ mr: 10 }}>
                         <IconButton 
                             component={Link} 
@@ -209,7 +214,6 @@ export default function Header() {
                                 <ShoppingCart />
                             </Badge>
                         </IconButton>
-
                         {user ? (
                             <SignedInMenu />
                         ) : (

@@ -34,7 +34,7 @@ namespace API.Extensions
             if (!string.IsNullOrEmpty(types))
                 typeList.AddRange(types.ToLower().Split(",").ToList());
 
-            query = query.Where(p => typeList.Count == 0 || typeList.Contains(p.Type.ToLower()));
+            query = query.Where(p => typeList.Count == 0 || typeList.Contains(p.ProductCategory.Name.ToLower()));
 
             return query;
         }

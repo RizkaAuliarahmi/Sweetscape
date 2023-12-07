@@ -10,7 +10,7 @@ export default function BasketPage(){
   if (!basket) return <Typography variant="h3">Your basket empty</Typography>
 
   return (
-    <Container sx={{mt: 4}}>
+    <>
       <BasketTable items={basket.items}/>
       <Grid container>
         <Grid item xs={6}/>
@@ -27,7 +27,7 @@ export default function BasketPage(){
           </Button>
         </Grid>
       </Grid>
-    </Container>
+    </>
       
   )
 }

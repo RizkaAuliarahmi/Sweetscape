@@ -5,14 +5,13 @@ interface Props {
 }
 
 export default function LoadingComponent({message = 'Loading...'}: Props) {
+    console.log(message);
     return (
-        <Backdrop open={true} invisible={true}>
-            <Box display='flex' justifyContent='center' alignItems='center' height='100vh'>
-                <CircularProgress size={100} color="primary"/>
-                <Typography variant='h4' sx={{justifyContent: 'center', position: 'fixed', top: '60%'}}>
-                    {message}
-                </Typography>
-            </Box>
-        </Backdrop>
+        <Box display='flex' justifyContent='center' alignItems='center' height='100vh'>
+            <CircularProgress size={100} color="primary" />
+            <Typography variant='h4' sx={{justifyContent: 'center', position: 'fixed', top: '60%', pt: message === 'Initializing app...' ? 0 : 15}}>
+                {message}
+            </Typography>
+        </Box>
     )
 }

@@ -1,7 +1,6 @@
 import { ImageListItem, ImageListItemBar } from "@mui/material";
 import { Product } from "../../app/models/products";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/store/ConfigureStore";
 import { currencyFormat } from "../../app/util/utils";
 
 interface Props {
@@ -9,8 +8,6 @@ interface Props {
 }
    
 export default function ProductCard({product}: Props) {
-    const {status} = useAppSelector(state => state.basket);
-    const dispatch = useAppDispatch();
     
     return (
           <ImageListItem 
@@ -20,7 +17,7 @@ export default function ProductCard({product}: Props) {
             style={{ textDecoration: "none", color: 'black', fontSize: 'large'}}
           >
             <img
-              src={`${product.pictureUrl}?w=248&fit=crop&auto=format`}
+              src={product.pictureUrl}
               alt={product.name}
               loading="lazy"
             />

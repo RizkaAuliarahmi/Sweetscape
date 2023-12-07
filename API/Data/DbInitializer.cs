@@ -32,244 +32,290 @@ namespace API.Data
             //check to see if there any product in database. if there we dont execute code
             if (context.Products.Any()) return;
 
+            var productCategory = new List<ProductCategory>
+            {
+                new ProductCategory
+                {
+                    Name = "Cupcake",
+                    PictureUrl = "/images/category/cupcake.jpg" 
+                },
+                new ProductCategory
+                {
+                    Name = "Donut",
+                    PictureUrl = "/images/category/donut.jpg" 
+                },
+                 new ProductCategory
+                {
+                    Name = "Slice Cake",
+                    PictureUrl = "/images/category/slice cake.jpg" 
+                },
+                 new ProductCategory
+                {
+                    Name = "Macaroon",
+                    PictureUrl = "/images/category/macaroon.jpg" 
+                }
+            };
+
             var products = new List<Product>
             {
 	        	new Product
                 {
                     Name = "Vanilla Cupcake",
-                    Description =
-                        "Vanilla cupcake offer a delightful, tender vanilla-flavored treat in every bite.",
+                    AllergenInformation =
+                        "Gluten (from flour), eggs, milk, and butter; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Enjoy our cupcakes at their best within 3 days of purchase for optimal freshness; store in a cool, dry place away from direct sunlight, and refrigerate if not consumed within this timeframe.",
                     Price = 24000,
                     PictureUrl = "/images/products/cupcake (2).jpg",
-                    Type = "Cupcake",
+                    ProductCategory = productCategory[0],
                     QuantityInStock = 33,
                     Date = "2022-10-27"
                 },
                 new Product
                 {
                     Name = "Chocolate Cupcake",
-                    Description = "Chocolate cupcake tantalize your taste buds with chocolatey delight in every bite.",
+                    AllergenInformation = "Gluten (from flour), eggs, milk, cocoa, and butter; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Enjoy our cupcakes at their best within 3 days of purchase for optimal freshness; store in a cool, dry place away from direct sunlight, and refrigerate if not consumed within this timeframe.",
                     Price = 32000,
                     PictureUrl = "/images/products/cupcake (1).jpg",
-                    Type = "Cupcake",
+                    ProductCategory = productCategory[0],
                     QuantityInStock = 28,
                     Date = "2022-10-27"
                 },
                 new Product
                 {
                     Name = "Strawberry Cupcake",
-                    Description = "Savor the sweet and delightful taste of our Strawberry Cupcake, a treat that's full of berry goodness.",
+                    AllergenInformation = "Gluten (from flour), eggs, milk, and butter; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Enjoy our cupcakes at their best within 3 days of purchase for optimal freshness; store in a cool, dry place away from direct sunlight, and refrigerate if not consumed within this timeframe.",
                     Price = 32000,
                     PictureUrl = "/images/products/cupcake (3).jpg",
-                    Type = "Cupcake",
+                    ProductCategory = productCategory[0],
                     QuantityInStock = 28,
                     Date = "2023-10-27"
                 },
                 new Product
                 {
                     Name = "Lemon Donut",
-                    Description =
-                        "Lemon donut are a zesty treat, featuring a soft, lemon-flavored pastry that provides a delightful burst of citrusy freshness in every bite.",
+                    AllergenInformation =
+                        "Wheat (from flour), eggs, milk, and butter; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (8).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 		        new Product
                 {
                     Name = "Tiramisu Donut",
-                    Description =
-                        "Tiramisu donut offer a delicious twist with coffee-infused pastries and creamy mascarpone.",
+                    AllergenInformation =
+                        "wheat (from flour), eggs, dairy, and nuts; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (10).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 		        new Product
                 {
                     Name = "Milk Donut",
-                    Description =
-                        "Milk donut are a classic treat, known for their soft and fluffy texture, often enjoyed with a glass of milk for a comforting and satisfying snack.",
+                    AllergenInformation =
+                        "Wheat (from flour), eggs, and dairy (from milk and butter); individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (5).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 		        new Product
                 {
                     Name = "Matcha Donut",
-                    Description =
-                        "Matcha donut are a unique and delightful dessert, featuring a green tea-infused pastry with a distinctive earthy flavor and a sweet glaze, perfect for matcha enthusiasts.",
+                    AllergenInformation =
+                        "Wheat (from flour), eggs, milk, and butter; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (4).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 		        new Product
                 {
                     Name = "Vanilla Donut",
-                    Description =
-                        "Vanilla donut are a timeless delight, offering a simple and classic treat with a soft, vanilla-flavored pastry that appeals to a wide range of tastes.",
+                    AllergenInformation =
+                        "Gluten (from flour), eggs, milk, and butter; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (2).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 	        	new Product
                 {
                     Name = "Almond Donut",
-                    Description =
-                        "Almond donut are a delightful pastry with a nutty crunch, often featuring a sweet almond glaze for a perfect balance of texture and flavor.",
+                    AllergenInformation =
+                        "Almonds, gluten (from flour), eggs, milk, soy, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (7).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 	        	new Product
                 {
                     Name = "Coconut Donut",
-                    Description =
-                        "Coconut donut offer a taste of the tropics with their soft, moist pastry and a sweet coconut flavor, making them a delightful treat for coconut enthusiasts.",
+                    AllergenInformation =
+                        "Gluten (from flour), eggs, milk, soy, and nuts; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (6).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 	        	new Product
                 {
                     Name = "Grape Donut",
-                    Description =
-                        "Grape donut are a fruity and unique pastry, filled or flavored with grape essence to provide a burst of grape flavor in every bite.",
+                    AllergenInformation =
+                        " Wheat (gluten), eggs, milk, and other ingredients; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (1).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 	        	new Product
                 {
                     Name = "Almond Choco Donut",
-                    Description =
-                        "Almond chocolate donut are a delicious combination of rich chocolate and a nutty almond crunch, offering a delightful blend of flavors and textures.",
+                    AllergenInformation =
+                        "Almonds, gluten (from flour), eggs, milk, soy, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (3).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
 		        new Product
                 {
                     Name = "Dark Chocolate Donut",
-                    Description =
-                        "Dark chocolate donut are a decadent treat with a rich, bittersweet chocolate flavor, perfect for those who appreciate the intensity of dark cocoa in a delightful pastry.",
+                    AllergenInformation =
+                        "Gluten (from flour), eggs, milk, and soy; individuals with allergies should carefully review the ingredient list for specific details.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (9).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2022-10-27"
                 },
                 new Product
                 {
                     Name = "Strawberry Donut",
-                    Description =
-                        "Savor the deliciousness of our Strawberry Donut – it's a sweet treat that'll make your taste buds happy",
+                    AllergenInformation =
+                        "Wheat (gluten), eggs, milk, and soy; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Shelf life for our donuts is approximately 2 days when stored in an airtight container at room temperature; for extended freshness, refrigerate and consume within 4 days, following the storage instructions provided.",
                     Price = 10000,
                     PictureUrl = "/images/products/donut (11).jpg",
-                    Type = "Donut",
+                    ProductCategory = productCategory[1],
                     QuantityInStock = 100,
                     Date = "2023-10-27"
                 },
                 new Product
                 {
                     Name = "Colorful Sweet Macaroon",
-                    Description =
-                        "Colorful sweet macaroon are delightful and visually appealing treats, with a variety of vibrant colors and a perfect balance of sweetness and texture in every bite.",
+                    AllergenInformation =
+                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
                     Price = 154000,
                     PictureUrl = "/images/products/macaroon (1).jpg",
-                    Type = "Macaroon",
+                    ProductCategory = productCategory[3],
                     QuantityInStock = 20,
                     Date = "2022-10-27"
                 },
                 new Product
                 {
                     Name = "Rainbow Mini Macaroon",
-                    Description =
-                        "Rainbow mini macaroon are a vibrant and cheerful dessert, featuring an array of bright colors in each delightful, bite-sized treat.",
+                    AllergenInformation =
+                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
                     Price = 59000,
                     PictureUrl = "/images/products/macaroon (2).jpg",
-                    Type = "Macaroon",
+                    ProductCategory = productCategory[3],
                     QuantityInStock = 16,
                     Date = "2022-10-27"
                 },
                 new Product
                 {
                     Name = "Strawberry Mini Macaroon",
-                    Description =
-                        "Enjoy the tasty mix of strawberry and almond in our Strawberry Mini Macaroon.",
+                    AllergenInformation =
+                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
                     Price = 200000,
                     PictureUrl = "/images/products/macaroon (3).jpg",
-                    Type = "Macaroon",
+                    ProductCategory = productCategory[3],
                     QuantityInStock = 19,
                     Date = "2023-10-27"
                 },
                 new Product
                 {
                     Name = "Strawberry Slice Cake",
-                    Description =
-                        "Strawberry slice cake is a delectable dessert with layers of moist cake and fresh strawberry slices, delivering a burst of fruity sweetness in every bite.",
+                    AllergenInformation =
+                        "Gluten (from flour), eggs, milk, and other potential allergens; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Enjoy the delightful Slice Cake within its recommended shelf life of 5 days when stored in a cool, dry place; for optimal freshness, refrigerate in an airtight container as per the provided storage instructions.",
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (2).jpg",
-                    Type = "Slice Cake",
+                    ProductCategory = productCategory[2],
                     QuantityInStock = 84,
                     Date = "2023-10-27"
                 },
                 new Product
                 {
                     Name = "Carrot Slice Cake",
-                    Description =
-                        "Carrot slice cake is a flavorful dessert with layers of moist carrot cake, often paired with a creamy frosting, offering a delightful blend of sweetness and spiced warmth.",
+                    AllergenInformation =
+                        "Nuts, eggs, and wheat (gluten); individuals with allergies should review the ingredient list for potential allergens.",
+                    ShelfLife = "Enjoy the delightful Slice Cake within its recommended shelf life of 5 days when stored in a cool, dry place; for optimal freshness, refrigerate in an airtight container as per the provided storage instructions.",
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (3).jpg",
-                    Type = "Slice Cake",
+                    ProductCategory = productCategory[2],
                     QuantityInStock = 84,
                     Date = "2022-10-27"
                 },
                 new Product
                 {
                     Name = "Coconut Carrot Slice Cake",
-                    Description = "Coconut carrot slice cake is a delightful dessert, combining the moistness of carrot cake with the tropical flavor of coconut, creating a unique and delicious treat.",
+                    AllergenInformation = "Coconut, nuts, and other potential allergens; individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Enjoy the delightful Slice Cake within its recommended shelf life of 5 days when stored in a cool, dry place; for optimal freshness, refrigerate in an airtight container as per the provided storage instructions.",
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (1).jpg",
-                    Type = "Slice Cake",
+                    ProductCategory = productCategory[2],
                     QuantityInStock = 84,
                     Date = "2022-10-27"
                 },
                 new Product
                 {
                     Name = "Cheese Slice Cake",
-                    Description =
-                        "Cheese slice cake is a savory and creamy delight, typically made with a rich cheese filling, often enjoyed as a satisfying dessert or a savory snack.",
+                    AllergenInformation =
+                        "Dairy (from cheese), wheat (flour), eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Enjoy the delightful Slice Cake within its recommended shelf life of 5 days when stored in a cool, dry place; for optimal freshness, refrigerate in an airtight container as per the provided storage instructions.",
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (4).jpg",
-                    Type = "Slice Cake",
+                    ProductCategory = productCategory[2],
                     QuantityInStock = 84,
                     Date = "2022-10-27"
                 },
                 new Product
                 {
                     Name = "Choco Cherry Slice Cake",
-                    Description =
-                        "Indulge in the rich and delightful taste of our Chocolate, Cherry, and Cheese Cream Slice Cake.",
+                    AllergenInformation =
+                        "Gluten (from flour), eggs, milk, and tree nuts (cherry); individuals with allergies should carefully review the ingredient list.",
+                    ShelfLife = "Enjoy the delightful Slice Cake within its recommended shelf life of 5 days when stored in a cool, dry place; for optimal freshness, refrigerate in an airtight container as per the provided storage instructions.",
                     Price = 40000,
                     PictureUrl = "/images/products/slice cake (5).jpg",
-                    Type = "Slice Cake",
+                    ProductCategory = productCategory[2],
                     QuantityInStock = 84,
                     Date = "2022-10-27"
                 },
