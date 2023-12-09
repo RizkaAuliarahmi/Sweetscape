@@ -1,5 +1,5 @@
-import { Container, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import Header from "./Header";
+import { Container, CssBaseline, ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material";
+import Header from "./Header/Header";
 import { useCallback, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -30,7 +30,7 @@ function App() {
     initApp().then(() => setLoading(false));
   }, [initApp])
 
-  const theme = createTheme({
+  const theme = responsiveFontSizes(createTheme({
     palette:{
         primary: {
           main: '#d3979f',
@@ -55,7 +55,8 @@ function App() {
           fontSize: '1.2rem',
         },
       },
-})
+}))
+
 
 if (loading) return <LoadingComponent message="Initializing app..." />
 

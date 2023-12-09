@@ -40,10 +40,10 @@ export default function HomePage() {
         minHeight: '1024px',
         }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', mt: 85}}>
-            <Typography color="white" sx={{ fontSize: 80, mr: 50}}>
+            <Typography color="white" variant='h1' sx={{ mr: 50 }}>
               Sweetest Choice
             </Typography>
-            <Typography color="white" sx={{ fontSize: 80, ml: 50 }}>
+            <Typography color="white" variant='h1' sx={{ ml: 50 }}>
               For Sweet Tooth
             </Typography>
             <Button variant="contained" color="secondary" component={Link} to='/catalog' sx={{ mt: 3, typography: 'h6' }}>
@@ -61,7 +61,7 @@ export default function HomePage() {
         </Typography>
         <Divider style={{ width: '100%', margin: '10px 0', borderColor: '#d3979f', borderWidth: 2 }}/>
         <Typography variant="h5"  sx={{textAlign: 'justify'}}>
-          Our latest collection features an array of treats—Strawberry Donut, Macaroon, Slice Cake, and Cupcake—all infused with the delightful essence of strawberries. Elevate your moments of joy and indulge in the richness of the season with these delectable creations, making each encounter a memorable ode to the sweetness of summer Treat yourself to these delightful creations.
+          Our latest collection features an array of treats—Strawberry Donut, Macaroon, Slice Cake, and Cupcake—all infused with the delightful essence of strawberries. Elevate your moments of joy and indulge in the richness of the season with these delectable creations. Treat yourself to these delightful creations.
         </Typography>
       </Grid>
       <Grid item xs={12} sx={{bgcolor: 'primary.main', mt: 5, pb: 5, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
