@@ -51,7 +51,6 @@ export default function CheckoutPage() {
     const handleNext = async (data: FieldValues) => {
         const {paymentMethod, saveAddress, ...shippingAddress} = data;
         if (activeStep === steps.length - 1) {
-            console.log("place order");
             setLoading(true);
             try {
                 const orderNumber = await agent.Orders.create({saveAddress, shippingAddress});
@@ -64,7 +63,6 @@ export default function CheckoutPage() {
                 setLoading(false);
             }
         } else {
-            console.log(activeStep);
             setActiveStep(activeStep + 1);
         }
     };

@@ -1,12 +1,12 @@
 import { List, ListItem } from "@mui/material";
-import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setProductParams } from "../../../features/catalog/catalogSlice";
+import { useAppDispatch } from "../../store/ConfigureStore";
 
-const midLinks = [
-    { title: 'catalog', path: '/catalog' },
-    { title: 'delivery information', path: '/delivery-information' },
-];
+interface Props {
+    menu: any[];
+    navStyles: React.CSSProperties;
+}
 
 const navStyles = {
     color: 'inherit',
@@ -20,8 +20,8 @@ const navStyles = {
     },
 };
 
-export default function HeaderDesktopMidMenu (){
-    const dispatch = useDispatch();
+export default function HeaderDesktopMidMenu({menu, navStyles}: Props){
+    const dispatch = useAppDispatch();
 
     const handleCatalogClick = () => {
         dispatch(setProductParams({ types: [] }));
@@ -29,7 +29,7 @@ export default function HeaderDesktopMidMenu (){
 
     return (
         <List sx={{ display: 'flex'}}>
-            {midLinks.map(({ title, path }) => (
+            {menu.map(({ title, path }) => (
                 <ListItem
                     component={NavLink}
                     onClick={() => handleCatalogClick()}

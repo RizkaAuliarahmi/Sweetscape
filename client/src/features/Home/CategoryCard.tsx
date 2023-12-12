@@ -3,8 +3,8 @@ import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import { ProductCategory } from '../../app/models/products';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { setProductParams } from '../catalog/catalogSlice';
+import { useAppDispatch } from '../../app/store/ConfigureStore';
 
 interface Props {
   productCategory: ProductCategory;
@@ -58,7 +58,7 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 
 export default function CategoryCard({productCategory}: Props) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleCategoryClick = () => {
     dispatch(

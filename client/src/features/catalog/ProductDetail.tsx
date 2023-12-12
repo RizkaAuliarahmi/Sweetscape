@@ -1,4 +1,4 @@
-import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
+import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NotFound from "../../errors/NotFound";
@@ -17,6 +17,7 @@ export default function ProductDetails() {
     const {status: productStatus} = useAppSelector(state => state.catalog);
     const [quantity, setQuantity] = useState(0);
     const item = basket?.items.find(i => i.productId === product?.id);
+    const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down('lg'));
 
     useEffect(() => {
         if (item) setQuantity(item.quantity);
@@ -44,14 +45,15 @@ export default function ProductDetails() {
     if (!product) return <NotFound/>
 
     return (
-        <Grid container spacing={6}>
-            <Grid item xs={6}>
-                <img src={product.pictureUrl} alt={product.name} style={{width: '100%'}} />
+        <Grid container spacing={isMobile ? 2 : 6}>
+            <Grid item xs={12} sm={isMobile ? 12 : 6}>
+                <img src={product.pictureUrl} alt={product.name} style={{ width: '100%' }} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={isMobile ? 12 : 6}>
+                {/* Konten lainnya */}
                 <Typography variant='h3'>{product.name}</Typography>
                 <Typography variant='h4' color='primary'>{currencyFormat(product.price)}</Typography>
-                <Divider sx={{mb: 2}}/>
+                <Divider sx={{ mb: 2 }} />
                 <TableContainer>
                     <Table>
                         <TableBody>
@@ -70,9 +72,9 @@ export default function ProductDetails() {
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <Divider sx={{mb: 2}}/>
-                <Grid container spacing={2}>
-                    <Grid item xs={6}>
+                <Divider sx={{ mb: 2 }} />
+                <Grid container spacing={isMobile ? 2 : 2}>
+                    <Grid item xs={12} sm={isMobile ? 12 : 6}>
                         <TextField
                             onChange={handleInputChange}
                             variant='outlined'
@@ -82,12 +84,12 @@ export default function ProductDetails() {
                             value={quantity}
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={isMobile ? 12 : 6}>
                         <LoadingButton
                             disabled={item?.quantity === quantity || !item && quantity === 0}
                             loading={status.includes('pending')}
                             onClick={handleUpdateCart}
-                            sx={{height: '55px'}}
+                            sx={{ height: '55px' }}
                             color='primary'
                             size='large'
                             variant='contained'
@@ -95,7 +97,6 @@ export default function ProductDetails() {
                         >
                             {item ? 'Update Quantity' : 'Add to Cart'}
                         </LoadingButton>
-
                     </Grid>
                 </Grid>
             </Grid>

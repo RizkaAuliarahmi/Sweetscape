@@ -40,19 +40,19 @@ export default function HeaderMobileMenu() {
                 <Divider />
                 <MenuItem component={Link} to='/basket'>My basket</MenuItem>
                 {user ? (
-                    <>
-                        <MenuItem component={Link} to='/orders'>My orders</MenuItem>
-                        <Divider />
+                    [[
+                        <MenuItem component={Link} to='/orders'>My orders</MenuItem>,
+                        <Divider />,
                         <MenuItem onClick={() => {
                             dispatch(signOut());
                             dispatch(clearBasket());
                         }}>Logout</MenuItem>
-                    </>
+                    ]]
                 ) : (
-                    <>
-                        <MenuItem component={Link} to='/login'>Login</MenuItem>
+                    [[
+                        <MenuItem component={Link} to='/login'>Login</MenuItem>,
                         <MenuItem component={Link} to='/register'>Register</MenuItem>
-                    </>
+                    ]]
                 )}
             </Menu>
         </>

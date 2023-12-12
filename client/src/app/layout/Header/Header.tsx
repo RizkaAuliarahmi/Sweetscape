@@ -2,6 +2,16 @@ import { useEffect, useState } from "react";
 import HeaderMobile from "./HeaderMobile";
 import HeaderDekstop from "./HeaderDekstop";
 
+const midLinks = [
+  { title: 'catalog', path: '/catalog' },
+  { title: 'delivery information', path: '/delivery-information' },
+];
+
+const rightLinks = [
+  { title: 'login', path: '/login' },
+  { title: 'register', path: '/register' },
+];
+
 export default function Header() {
   const [mobileView, setMobileView] = useState(false);
   
@@ -21,7 +31,11 @@ export default function Header() {
 
   return (
     <>
-      {mobileView ? <HeaderMobile/> : <HeaderDekstop/>}
+      {mobileView ? 
+        <HeaderMobile/> 
+      : 
+        <HeaderDekstop midMenu={midLinks} rightMenu={rightLinks}/>
+      }
     </>
   );
 }

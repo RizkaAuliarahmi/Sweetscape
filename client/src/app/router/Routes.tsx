@@ -12,7 +12,7 @@ import CheckoutPage from "../../features/checkout/CheckoutPage";
 import Login from "../../features/account/Login";
 import Register from "../../features/account/Register";
 import RequireAuth from "./RequireAuth";
-import Orders from "../../features/orders/Orders";
+import Orders from "../../features/orders/OrdersPage";
 import ProfilePage from "../../features/profile/ProfilePage";
 
 export const router = createBrowserRouter([

@@ -30,9 +30,7 @@ export default function Orders() {
             setSelectedOrder={setSelectedOrderNumber}
         />
     )
-
     
-
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">

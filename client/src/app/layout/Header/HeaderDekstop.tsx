@@ -1,12 +1,28 @@
 import { AppBar, Box, Toolbar } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import HeaderDekstopMenu from "./HeaderDekstopRightMenu";
 import HeaderDekstopMidMenu from "./HeaderDekstopMidMenu";
 import HeaderDekstopRightMenu from "./HeaderDekstopRightMenu";
 import HeaderLogo from "./HeaderLogo";
 
-export default function Header() {
+interface Props {
+    midMenu: any[];
+    rightMenu: any[];
+}
+
+const navStyles = {
+    color: 'inherit',
+    textDecoration: 'none',
+    typography: 'h6',
+    '&:hover': {
+        color: 'secondary.main',
+    },
+    '&.active': {
+        color: 'secondary.main',
+    },
+};
+
+export default function HeaderDekstop({midMenu, rightMenu}: Props) {
     const [showScrollHeader, setShowScrollHeader] = useState(false);
     const location = useLocation();
 
@@ -64,7 +80,10 @@ export default function Header() {
                                 mt: 2 
                             }}
                         >
-                            <HeaderDekstopMenu />
+                            <HeaderDekstopRightMenu 
+                                menu={rightMenu} 
+                                navStyles={navStyles}
+                            />
                         </Box>
                     </Toolbar>
                     <Toolbar 
@@ -75,7 +94,10 @@ export default function Header() {
                         }}
                     >
                         <HeaderLogo variant="h1" letterSpacing={6}/>
-                        <HeaderDekstopMidMenu />
+                        <HeaderDekstopMidMenu 
+                            menu={midMenu}
+                            navStyles={navStyles}    
+                        />
                     </Toolbar>
                 </AppBar>
             )}
@@ -95,9 +117,15 @@ export default function Header() {
                         variant="h2" 
                         letterSpacing={4}
                     />
-                    <HeaderDekstopMidMenu />
+                    <HeaderDekstopMidMenu 
+                        menu={midMenu}
+                        navStyles={navStyles}
+                    />
                     <Box display='flex' alignItems='center' sx={{ mr: 10 }}>
-                        <HeaderDekstopRightMenu/>
+                        <HeaderDekstopRightMenu 
+                            menu={rightMenu}
+                            navStyles={navStyles}
+                        />
                     </Box>
                 </Toolbar>
             </AppBar>

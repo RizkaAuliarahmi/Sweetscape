@@ -30,7 +30,7 @@ export default function BasketSummary({subtotal}: Props) {
                             <TableCell align="right">{currencyFormat(subtotal + deliveryFee)}</TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell>
+                            <TableCell colSpan={3} style={{ whiteSpace: 'nowrap' }}>
                                 <span style={{ fontStyle: 'italic' }}>*Orders over Rp. 100.000 qualify for free delivery</span>
                             </TableCell>
                         </TableRow>

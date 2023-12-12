@@ -11,7 +11,7 @@ interface Props {
 
 export default function OrderDetailed({ order, setSelectedOrder }: Props) {
     const subtotal = order.orderItems.reduce((sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
-    const isMobile = useMediaQuery('(max-width: 600px)'); // Ganti dengan lebar layar yang sesuai
+    const isMobile = useMediaQuery('(max-width: 600px)');
 
     return (
         <>

@@ -4,27 +4,15 @@ import { Link, NavLink } from "react-router-dom"
 import SignedInMenu from "../SignedInMenu"
 import { useAppSelector } from "../../store/ConfigureStore";
 
-const rightLinks = [
-    { title: 'login', path: '/login' },
-    { title: 'register', path: '/register' },
-];
+interface Props {
+    menu: any[];
+    navStyles: React.CSSProperties;
+}
 
-const navStyles = {
-    color: 'inherit',
-    textDecoration: 'none',
-    typography: 'h6',
-    '&:hover': {
-        color: 'secondary.main',
-    },
-    '&.active': {
-        color: 'secondary.main',
-    },
-};
-
-export default function HeaderDekstopRightMenu (){
+export default function HeaderDekstopRightMenu ({menu, navStyles}: Props){
     const { basket } = useAppSelector((state) => state.basket);
     const { user } = useAppSelector((state) => state.account);
-    const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
+    const itemCount = basket?.items.reduce((sum: any, item: { quantity: any; }) => sum + item.quantity, 0);
 
     return (
         <>
@@ -46,7 +34,7 @@ export default function HeaderDekstopRightMenu (){
                 <SignedInMenu />
             ) : (
                 <List sx={{ display: 'flex' }}>
-                    {rightLinks.map(({ title, path }) => (
+                    {menu.map(({ title, path }) => (
                         <ListItem
                             component={NavLink}
                             to={path}
