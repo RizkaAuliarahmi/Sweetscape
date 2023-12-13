@@ -1,10 +1,18 @@
 import { LockOutlined } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
-import { Avatar, Box, Container, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Container, Grid, Paper, TextField, Typography, styled } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import agent from '../../app/api/agent';
+
+const StyledLink  = styled(Link)(({ theme }) => ({
+    textDecoration: 'none',
+    color: 'inherit',
+    '&:hover': {
+        color: theme.palette.primary.main,
+    }
+  }));
 
 export default function Register() {
     const navigate = useNavigate();
@@ -96,9 +104,9 @@ export default function Register() {
                 </LoadingButton>
                 <Grid container>
                     <Grid item>
-                        <Link to='/login' style={{ textDecoration: 'none' }}>
+                        <StyledLink to='/login'>
                             {"Already have an account? Sign In"}
-                        </Link>
+                        </StyledLink>
                     </Grid>
                 </Grid>
             </Box>

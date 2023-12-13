@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProductList from "./ProductList";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../app/store/ConfigureStore";
 import { fetchFilters, fetchProductsAsync, productSelector, setPageNumber } from "./catalogSlice";
-import { Grid } from "@mui/material";
+import { Grid, Typography, useMediaQuery } from "@mui/material";
 import AppPagination from "../../app/components/AppPagination";
 import CatalogExtensionsMobile from "./CatalogExtensionsMobile";
 import CatalogExtensionsDekstop from "./CatalogExtensionsDekstop";
@@ -19,21 +19,8 @@ export default function Catalog() {
   const { types } = useAppSelector(state => state.catalog);
   const { productsLoaded, filtersLoaded, metaData } = useAppSelector(state => state.catalog);
   const dispatch = useAppDispatch();
-  const [mobileView, setMobileView] = useState(false);
-  
-  useEffect(() => {
-      const setResponsiveness = () => {
-        setMobileView(window.innerWidth < 900);
-      };
-    
-      setResponsiveness();
-    
-      window.addEventListener("resize", setResponsiveness);
-    
-      return () => {
-        window.removeEventListener("resize", setResponsiveness);
-      };
-    }, []);
+  const isMobile = useMediaQuery('(max-width: 900px)');
+  const isProductListEmpty = products.length === 0 && productsLoaded;
 
   useEffect(() => {
     if (!productsLoaded) dispatch(fetchProductsAsync());
@@ -47,20 +34,26 @@ export default function Catalog() {
 
   return (
     <Grid container spacing={4}>
-      {mobileView ? 
+      {isMobile ? 
         <CatalogExtensionsMobile sortOptions={sortOptions} filterOptions={types}/> 
       : 
         <CatalogExtensionsDekstop sortOptions={sortOptions} filterOptions={types}/>
       }
       <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
-        <ProductList products={products} />
-      </Grid>
-      <Grid item xs={12} sx={{ mb: 2 }}>
-        {metaData && (
-          <AppPagination
-            metaData={metaData}
-            onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))}
-          />
+      {isProductListEmpty ? (
+          <Typography variant="h5" color="textSecondary" align="center" mt={4}>
+            Product not found.
+          </Typography>
+        ) : (
+          <>
+            <ProductList products={products} />
+            {metaData && (
+              <AppPagination
+                metaData={metaData}
+                onPageChange={(page: number) => dispatch(setPageNumber({ pageNumber: page }))}
+              />
+            )}
+          </>
         )}
       </Grid>
     </Grid>

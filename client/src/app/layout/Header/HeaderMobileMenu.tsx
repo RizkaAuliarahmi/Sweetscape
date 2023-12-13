@@ -6,7 +6,12 @@ import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/ConfigureStore";
 import MenuIcon from '@mui/icons-material/Menu';
 
-export default function HeaderMobileMenu() {
+interface Props {
+    midMenu: any[];
+    rightMenu: any[];
+}
+
+export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
     const { user } = useAppSelector((state) => state.account);
     const dispatch = useAppDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
@@ -35,8 +40,11 @@ export default function HeaderMobileMenu() {
                 onClose={handleClose}
                 TransitionComponent={Fade}
             >
-                <MenuItem component={Link} to='/catalog'>Catalog</MenuItem>
-                <MenuItem component={Link} to='/delivery-information'>Delivery information</MenuItem>
+                {midMenu.map(({ title, path }) => (
+                    <>
+                        <MenuItem component={Link} to={path}>{title}</MenuItem>
+                    </>
+                ))}
                 <Divider />
                 <MenuItem component={Link} to='/basket'>My basket</MenuItem>
                 {user ? (
@@ -49,10 +57,13 @@ export default function HeaderMobileMenu() {
                         }}>Logout</MenuItem>
                     ]]
                 ) : (
-                    [[
-                        <MenuItem component={Link} to='/login'>Login</MenuItem>,
-                        <MenuItem component={Link} to='/register'>Register</MenuItem>
-                    ]]
+                    <>
+                        {rightMenu.map(({ title, path }) => (
+                            [[
+                                <MenuItem component={Link} to={path}>{title}</MenuItem>
+                            ]]
+                        ))}
+                    </>
                 )}
             </Menu>
         </>

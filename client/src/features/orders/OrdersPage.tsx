@@ -10,7 +10,7 @@ export default function Orders() {
     const [orders, setOrders] = useState<Order[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [selectedOrderNumber, setSelectedOrderNumber] = useState(0);
-    const isMobile = useMediaQuery('(max-width: 600px)'); // Ganti dengan lebar layar yang sesuai
+    const isMobile = useMediaQuery('(max-width: 600px)');
 
     const showTotalColumn = !isMobile;
     const showOrderDateColumn = !isMobile;

@@ -6,12 +6,17 @@ import HeaderMenu from "./HeaderMobileMenu";
 import HeaderLogo from "./HeaderLogo";
 import ProductSearch from "../../../features/catalog/productSearch";
 
+interface Props {
+  midMenu: any[];
+  rightMenu: any[];
+}
+
 const toolbarStyles = {
   display: 'flex',
   justifyContent: 'flex-start',
 };
 
-export default function Header() {
+export default function HeaderMobile({midMenu, rightMenu}: Props) {
   const [showScrollHeader, setShowScrollHeader] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
@@ -62,7 +67,7 @@ export default function Header() {
           }}
         >
           <Toolbar sx={toolbarStyles}>
-            <HeaderMenu />
+            <HeaderMenu midMenu={midMenu} rightMenu={rightMenu}/>
             <HeaderLogo variant="h4" letterSpacing={6} />
           </Toolbar>
         </AppBar>
@@ -72,7 +77,7 @@ export default function Header() {
         sx={getAppBarStyle()}
       >
         <Toolbar sx={toolbarStyles}>
-          <HeaderMenu />
+          <HeaderMenu midMenu={midMenu} rightMenu={rightMenu}/>
           <HeaderLogo variant="h4" letterSpacing={6} />
           <div style={{ marginLeft: 'auto' }}>
             {location.pathname === "/catalog" && ( 
