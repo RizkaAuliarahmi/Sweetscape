@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
-    const { user } = useAppSelector((state) => state.account);
+    const { user } = useAppSelector((state: any) => state.account);
     const dispatch = useAppDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -41,35 +41,33 @@ export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
                 TransitionComponent={Fade}
             >
                 {midMenu.map(({ title, path }) => (
-                    <>
+                    [[
                         <MenuItem component={Link} to={path}>
                             {title}
                         </MenuItem>
-                    </>
+                    ]]
                 ))}
                 <Divider />
                 <MenuItem component={Link} to='/basket'>My basket</MenuItem>
                 {user ? (
-                    [[
-                        <MenuItem component={Link} to='/orders'>
+                    [
+                        <MenuItem component={Link} to='/orders' key='my-orders'>
                             My orders
                         </MenuItem>,
-                        <Divider />,
+                        <Divider key='divider' />,
                         <MenuItem onClick={() => {
                             dispatch(signOut());
                             dispatch(clearBasket());
-                        }}>Logout</MenuItem>
-                    ]]
+                        }} key='logout'>
+                            Logout
+                        </MenuItem>
+                    ]
                 ) : (
-                    <>
-                        {rightMenu.map(({ title, path }) => (
-                            [[
-                                <MenuItem component={Link} to={path}>
-                                    {title}
-                                </MenuItem>
-                            ]]
-                        ))}
-                    </>
+                    rightMenu.map(({ title, path }) => (
+                        <MenuItem component={Link} to={path} key={title.toLowerCase()}>
+                            {title}
+                        </MenuItem>
+                    ))
                 )}
             </Menu>
         </>
