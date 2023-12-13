@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import agent from "../../app/api/agent";
 import { Product } from "../../app/models/products";
@@ -47,19 +47,40 @@ export default function HomePage() {
         <Banner bannerContent={bannerContent} />
       </Grid>
       <Grid item xs={12} sm={12} md={7} lg={7} xl={7} sx={{
-          borderLeft: { xs: '8px solid #ffff', md: '12px solid #ffff', lg: '72px solid #ffff' },
+          borderLeft: { 
+            xs: '8px solid #ffff', 
+            md: '12px solid #ffff', 
+            lg: '72px solid #ffff' 
+          },
           padding: 2,
         }}>
           <AppSlider products={newProducts} />
       </Grid>
       <Grid item xs={12} sm={12} md={5} lg={5} xl={5} sx={{
-          borderRight: { xs: '8px solid #ffff', md: '12px solid #ffff', lg: '72px solid #ffff' },
+          borderRight: { 
+            xs: '8px solid #ffff', 
+            md: '12px solid #ffff', 
+            lg: '72px solid #ffff' 
+          },
           padding: 2,
         }}>
         <ProductDescription productDescription={productDescription} />
       </Grid>
-      <Grid item xs={12} sx={{pb: 5, bgcolor: 'primary.main', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        <Typography variant="h4" color="white" sx={{ pt: 2, textAlign: 'center'}}>
+      <Grid item 
+        xs={12} 
+        sx={{
+          pb: 5, 
+          bgcolor: 'primary.main', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center'
+        }}
+      >
+        <Typography 
+          variant="h4" 
+          color="white" 
+          sx={{ pt: 2, textAlign: 'center'}}
+        >
           Treat Yourself to Our Sweet Variety
         </Typography>
         <CategoryList productCategories={productCategories}/>

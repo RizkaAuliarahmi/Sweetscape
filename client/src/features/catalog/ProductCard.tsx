@@ -14,7 +14,11 @@ export default function ProductCard({product}: Props) {
             key={product.pictureUrl} 
             component={Link} 
             to={`/catalog/${product.id}`} 
-            style={{ textDecoration: "none", color: 'black', fontSize: 'large'}}
+            style={{ 
+              textDecoration: "none", 
+              color: 'black', 
+              fontSize: 'large'
+            }}
           >
             <img
               src={product.pictureUrl}

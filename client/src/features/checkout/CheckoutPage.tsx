@@ -1,4 +1,4 @@
-import { Box, Button, Container, Paper, Step, StepLabel, Stepper, Typography } from "@mui/material";
+import { Box, Button, Paper, Step, StepLabel, Stepper, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
@@ -73,7 +73,13 @@ export default function CheckoutPage() {
 
     return (
         <FormProvider {...methods}>
-            <Paper variant="outlined" sx={{my: {xs: 3, md: 6}, p: {xs: 2, md: 3}}} >
+            <Paper 
+                variant="outlined" 
+                sx={{
+                    my: {xs: 3, md: 6}, 
+                    p: {xs: 2, md: 3}
+                    }} 
+            >
                 <Typography component="h1" variant="h4" align="center">
                     Checkout
                 </Typography>
@@ -99,10 +105,25 @@ export default function CheckoutPage() {
                     ) : (
                         <form onSubmit={methods.handleSubmit(handleNext)}>
                             {getStepContent(activeStep)}
-                            <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
+                            <Box 
+                                sx={{
+                                    display: 'flex', 
+                                    justifyContent: 'flex-end'
+                                    }}
+                            >
                                 {activeStep !== 0 && (
-                                    <Button onClick={handleBack} sx={{mt: 3, ml: 1, color:"inherit", '&:hover': {
-                                        backgroundColor: '#d3979f', color: '#ffffff'}}}>
+                                    <Button 
+                                        onClick={handleBack} 
+                                        sx={{
+                                            mt: 3,
+                                            ml: 1, 
+                                            color:"inherit", 
+                                            '&:hover': { 
+                                                backgroundColor: '#d3979f', 
+                                                color: '#ffffff'
+                                            }
+                                        }}
+                                    >
                                         Back
                                     </Button>
                                 )}
@@ -113,7 +134,8 @@ export default function CheckoutPage() {
                                     type="submit"
                                     sx={{mt: 3, ml: 1}}
                                 >
-                                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                                    {activeStep === steps.length - 1 ? 
+                                        'Place order' : 'Next'}
                                 </LoadingButton>
                             </Box>
                         </form>

@@ -12,7 +12,8 @@ interface Props {
 export default function HeaderDekstopRightMenu ({menu, navStyles}: Props){
     const { basket } = useAppSelector((state) => state.basket);
     const { user } = useAppSelector((state) => state.account);
-    const itemCount = basket?.items.reduce((sum: any, item: { quantity: any; }) => sum + item.quantity, 0);
+    const itemCount = basket?.items.reduce(
+        (sum: any, item: { quantity: any; }) => sum + item.quantity, 0);
 
     return (
         <>

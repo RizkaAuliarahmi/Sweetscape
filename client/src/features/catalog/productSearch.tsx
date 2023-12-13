@@ -32,7 +32,11 @@ export default function ProductSearch() {
         endAdornment: (
           <InputAdornment position="end">
             {searchTerm && (
-              <IconButton edge="end" onClick={handleClearClick} tabIndex={-1}>
+              <IconButton 
+                edge="end" 
+                onClick={handleClearClick} 
+                tabIndex={-1}
+              >
                 <ClearIcon />
               </IconButton>
             )}

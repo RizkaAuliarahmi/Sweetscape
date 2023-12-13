@@ -22,7 +22,7 @@ export default function ProductDetails() {
     useEffect(() => {
         if (item) setQuantity(item.quantity);
         if (!product && id) dispatch(fetchProductAsync(parseInt(id)));
-    }, [id, item, product])
+    }, [id, item, product, dispatch])
 
     function handleInputChange(event: any) {
         if (event.target.value >= 0) {
@@ -47,19 +47,26 @@ export default function ProductDetails() {
     return (
         <Grid container spacing={isMobile ? 2 : 6}>
             <Grid item xs={12} sm={isMobile ? 12 : 6}>
-                <img src={product.pictureUrl} alt={product.name} style={{ width: '100%' }} />
+                <img 
+                    src={product.pictureUrl} 
+                    alt={product.name} 
+                    style={{ width: '100%' }} 
+                />
             </Grid>
             <Grid item xs={12} sm={isMobile ? 12 : 6}>
-                {/* Konten lainnya */}
                 <Typography variant='h3'>{product.name}</Typography>
-                <Typography variant='h4' color='primary'>{currencyFormat(product.price)}</Typography>
+                <Typography variant='h4' color='primary'>
+                    {currencyFormat(product.price)}
+                </Typography>
                 <Divider sx={{ mb: 2 }} />
                 <TableContainer>
                     <Table>
                         <TableBody>
                             <TableRow>
                                 <TableCell>Allergen Information</TableCell>
-                                <TableCell>{product.allergenInformation}</TableCell>
+                                <TableCell>
+                                    {product.allergenInformation}
+                                </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Shelf Life</TableCell>
@@ -67,7 +74,9 @@ export default function ProductDetails() {
                             </TableRow>
                             <TableRow>
                                 <TableCell>Quantity in stock</TableCell>
-                                <TableCell>{product.quantityInStock}</TableCell>
+                                <TableCell>
+                                    {product.quantityInStock}
+                                </TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
@@ -86,7 +95,7 @@ export default function ProductDetails() {
                     </Grid>
                     <Grid item xs={12} sm={isMobile ? 12 : 6}>
                         <LoadingButton
-                            disabled={item?.quantity === quantity || !item && quantity === 0}
+                            disabled={(item?.quantity === quantity) || (!item && quantity === 0)}
                             loading={status.includes('pending')}
                             onClick={handleUpdateCart}
                             sx={{ height: '55px' }}

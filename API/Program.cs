@@ -10,12 +10,15 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
+// Adds support for controllers
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+// Adds support for Swagger
 builder.Services.AddSwaggerGen(c => 
 {
+    // Configures Swagger/OpenAPI generation
     var jwtSecurityScheme = new OpenApiSecurityScheme
     {
         BearerFormat = "JWT",
@@ -40,23 +43,29 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+// Configures Swagger/OpenAPI generation for documenting APIs
+
 builder.Services.AddDbContext<StoreContext>(opt => 
 {
+    // Configures the application to use SQLite
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-//ordering above is not important
 
-//add CORS
+//add CORS support
 builder.Services.AddCors();
 builder.Services.AddIdentityCore<User>(opt => 
 {
+    // Configures Identity with custom options
     opt.User.RequireUniqueEmail = true;
 })
     .AddRoles<Role>()
     .AddEntityFrameworkStores<StoreContext>();
+// Configures Identity with roles and Entity Framework as the store
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt => 
     {
+        // Configures JWT Bearer authentication
         opt.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = false,
@@ -66,16 +75,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWTSettings:TokenKey"]))
         };
     });
+
+// Adds support for authorization
 builder.Services.AddAuthorization();
+
+// Adds TokenService as a scoped service
 builder.Services.AddScoped<TokenService>();
 
 var app = builder.Build();
+
+// Adds custom exception handling middleware
 app.UseMiddleware<ExceptionMiddleware>();
 
 //Configure the HTTP request pipeline.
 //ordering below is important
 if (app.Environment.IsDevelopment())
 {
+    // Enables Swagger UI in development mode
     app.UseSwagger();
     app.UseSwaggerUI(c => 
     {
@@ -85,10 +101,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(opt =>
 {
+    // Configures CORS policies
     opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
 });
+// Uses authentication middleware
 app.UseAuthentication();
+
+// Uses authorization middleware
 app.UseAuthorization();
+
+// Maps controllers for handling requests
 app.MapControllers();
 
 var scope = app.Services.CreateScope();
@@ -107,6 +129,7 @@ try
 }
 catch (Exception ex)
 {
+    // Logs any errors during database migration
     logger.LogError(ex, "A problem occurred during migration");
 }
 

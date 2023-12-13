@@ -1,11 +1,4 @@
-import React from "react";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, } from "@mui/material";
 
 interface DropdownProps {
   options: any[];

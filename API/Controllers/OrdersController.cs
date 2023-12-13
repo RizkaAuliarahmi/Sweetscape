@@ -16,7 +16,6 @@ namespace API.Controllers
         public OrdersController(StoreContext context)
         {
             _context = context;
-
         }
 
         [HttpGet]

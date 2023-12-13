@@ -10,13 +10,20 @@ interface Props {
 }
 
 export default function OrderDetailed({ order, setSelectedOrder }: Props) {
-    const subtotal = order.orderItems.reduce((sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
+    const subtotal = order.orderItems.reduce(
+        (sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
     const isMobile = useMediaQuery('(max-width: 600px)');
 
     return (
         <>
             <Box display='flex' flexDirection={isMobile ? 'column' : 'row'} justifyContent='space-between'>
-                <Typography sx={{ p: 2, fontSize: isMobile ? '1.5rem' : '2rem' }} gutterBottom variant='h4'>
+                <Typography 
+                    sx={{ 
+                        p: 2, 
+                        fontSize: isMobile ? '1.5rem' : '2rem' 
+                    }} 
+                    gutterBottom variant='h4'
+                >
                     Order# {order.id} - {order.orderStatus}
                 </Typography>
                 <Button
@@ -28,7 +35,10 @@ export default function OrderDetailed({ order, setSelectedOrder }: Props) {
                     Back to orders
                 </Button>
             </Box>
-            <BasketTable items={order.orderItems as BasketItem[]} isBasket={false} />
+            <BasketTable 
+                items={order.orderItems as BasketItem[]} 
+                isBasket={false} 
+            />
             { isMobile ? (
                 <BasketSummary subtotal={subtotal} />
             ) : (
@@ -39,7 +49,6 @@ export default function OrderDetailed({ order, setSelectedOrder }: Props) {
                     </Grid>
                 </Grid>
             )}
-            
         </>
     )
 }

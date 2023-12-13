@@ -25,10 +25,10 @@ export default function Orders() {
     if (loading) return <LoadingComponent message="Loading orders..." />
 
     if (selectedOrderNumber > 0) return (
-        <OrderDetailed
-            order={orders?.find(o => o.id === selectedOrderNumber)!}
-            setSelectedOrder={setSelectedOrderNumber}
-        />
+      <OrderDetailed
+          order={orders?.find(o => o.id === selectedOrderNumber)!}
+          setSelectedOrder={setSelectedOrderNumber}
+      />
     )
     
   return (
@@ -49,8 +49,12 @@ export default function Orders() {
               <TableCell component="th" scope="row">
                 {order.id}
               </TableCell>
-              {showTotalColumn && <TableCell>{currencyFormat(order.total)}</TableCell>}
-              {showOrderDateColumn && <TableCell>{order.orderDate.split('T')[0]}</TableCell>}
+              {showTotalColumn && <TableCell>
+                {currencyFormat(order.total)}
+              </TableCell>}
+              {showOrderDateColumn && <TableCell>
+                {order.orderDate.split('T')[0]}
+              </TableCell>}
               <TableCell>{order.orderStatus}</TableCell>
               <TableCell>
                 <Button onClick={() => setSelectedOrderNumber(order.id)}>

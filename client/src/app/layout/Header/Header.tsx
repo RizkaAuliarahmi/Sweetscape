@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import HeaderMobile from "./HeaderMobile";
 import HeaderDekstop from "./HeaderDekstop";
 import { useMediaQuery } from "@mui/material";

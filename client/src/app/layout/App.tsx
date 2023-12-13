@@ -39,9 +39,6 @@ function App() {
         secondary: {
           main: '#fff4e6',
         },
-        background: {
-          default: '#fffff',
-        },
       },
       typography: {
         allVariants: {
@@ -57,7 +54,6 @@ function App() {
       },
 }))
 
-
 if (loading) return <LoadingComponent message="Initializing app..." />
 
   return (
@@ -65,11 +61,8 @@ if (loading) return <LoadingComponent message="Initializing app..." />
       <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
       <CssBaseline />
       <Header />
-       {/* Komponen untuk kembali ke atas halaman */}
        <ScrollToTop />
-      {/* Menampilkan beranda jika path adalah '/' */}
       {location.pathname === '/' ? <HomePage /> :
-        // Menampilkan outlet (komponen yang sesuai dengan rute)
         <Container sx={{ mt: 4, mb: 20 }}>
           <Outlet />
         </Container>

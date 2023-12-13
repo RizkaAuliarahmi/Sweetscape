@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Typography, Paper, List, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useFormContext, Controller } from "react-hook-form";
-import AppBox from "../../app/components/Box";
+import AppBox from "../../app/components/AppBox";
 
 const paymentMethods = [
   { value: 'cashOnDelivery', label: 'Cash On Delivery' },
@@ -27,7 +27,6 @@ export default function PaymentForm() {
       <Typography variant="h5" gutterBottom>
         Payment Method
       </Typography>
-
       <List>
         <Box sx={{ display: 'flex' }}>
           {paymentMethods.map((method) => (
@@ -49,9 +48,8 @@ export default function PaymentForm() {
           ))}
         </Box>
       </List>
-
       {selectedMethod === 'bankTransfer' && (
-        <div>
+        <>
           <Typography variant="h6" gutterBottom>
             Select a Bank:
           </Typography>
@@ -65,12 +63,11 @@ export default function PaymentForm() {
                 key={bank}
                 value={bank}
                 control={<Radio/>}
-                label={bank}
-                
+                label={bank}               
               />
             ))}
           </RadioGroup>
-        </div>
+        </>
       )}
     </Paper>
   );

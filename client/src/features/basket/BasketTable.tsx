@@ -1,6 +1,6 @@
 import { Remove, Add, Delete } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, Box } from "@mui/material";
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Box } from "@mui/material";
 import { removeBasketItemAsync, addBasketItemAsync } from "./basketSlice";
 import { BasketItem } from "../../app/models/basket";
 import { useAppDispatch, useAppSelector } from "../../app/store/ConfigureStore";
@@ -35,11 +35,17 @@ export default function BasketTable({items, isBasket = true}: Props){
               >
                 <TableCell component="th" scope="row">
                   <Box display='flex' alignItems='center'>
-                    <img src={item.pictureUrl} alt={item.name} style={{ height: 50, marginRight: 20 }} />
+                    <img 
+                      src={item.pictureUrl} 
+                      alt={item.name} 
+                      style={{ height: 50, marginRight: 20 }} 
+                    />
                     <span>{item.name}</span>
                   </Box>
                 </TableCell>
-                <TableCell align="center">{currencyFormat(item.price)}</TableCell>
+                <TableCell align="center">
+                  {currencyFormat(item.price)}
+                </TableCell>
                 <TableCell align="center">
                   {isBasket && (
                     <Box display='flex' alignItems='center'>
@@ -64,7 +70,9 @@ export default function BasketTable({items, isBasket = true}: Props){
                   )}
                   {!isBasket && <span>{item.quantity}</span>}
                 </TableCell>
-                <TableCell align="right">{currencyFormat(item.price * item.quantity)}</TableCell>
+                <TableCell align="right">
+                  {currencyFormat(item.price * item.quantity)}
+                </TableCell>
                 {isBasket && (
                   <TableCell align="right">
                     <LoadingButton

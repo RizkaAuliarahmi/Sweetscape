@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace API.Services
 {
+    // Service for generating JWT (JSON Web Token) for user authentication
     public class TokenService
     {
         
@@ -18,6 +19,7 @@ namespace API.Services
             _userManager = userManager;
         }
 
+        // Generates a JWT for the specified user
         public async Task<string> GenerateToken(User user)
         {
             var claims = new List<Claim>
@@ -31,8 +33,10 @@ namespace API.Services
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
-
+            // Key for signing the token
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWTSettings:TokenKey"]));
+            
+            // Signing credentials represent the key and the signing algorithm to use
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
 
             var tokenOptions = new JwtSecurityToken(
@@ -43,6 +47,7 @@ namespace API.Services
                 signingCredentials: creds
             );
 
+            // Generate the token as a string using a JWT handler
             return new JwtSecurityTokenHandler().WriteToken(tokenOptions);
         }
     }

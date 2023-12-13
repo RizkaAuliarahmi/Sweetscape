@@ -44,6 +44,7 @@ export const fetchCurrentUser = createAsyncThunk<User>(
         }
     },
     {
+        // Kondisi untuk menjalankan thunk hanya jika data pengguna belum ada di localStorage
         condition: () => {
             if (!localStorage.getItem('user')) return false;
         }

@@ -24,7 +24,13 @@ export default function Banner({ bannerContent }: Props) {
         minHeight: isMobile ? '30vh' : '1024px',
       }}
     >
-      <Box sx={{ display: 'flex', flexDirection: 'column', mt: isMobile ? 4 : 85 }}>
+      <Box 
+        sx={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          mt: isMobile ? 4 : 85 
+          }}
+        >
         <Typography
           color={isMobile ? "black" : "white"}
           variant='h1'

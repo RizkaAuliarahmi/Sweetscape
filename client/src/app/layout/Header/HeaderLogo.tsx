@@ -15,7 +15,13 @@ export default function HeaderLogo({sx, variant, letterSpacing } : Props) {
             component={Link} 
             to={'/'} 
             sx={{ textDecoration: 'none', ...sx}}>
-            <Typography variant={variant} style={{ color: '#fff4e6', fontFamily: 'Great Vibes', letterSpacing: {letterSpacing} }}>
+            <Typography 
+                variant={variant} 
+                style={{ 
+                    color: '#fff4e6', 
+                    fontFamily: 'Great Vibes', 
+                    letterSpacing: {letterSpacing} }}
+            >
                 Sweetscape
             </Typography>
         </Box>

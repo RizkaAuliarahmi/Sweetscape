@@ -8,18 +8,6 @@ interface Props {
     navStyles: React.CSSProperties;
 }
 
-const navStyles = {
-    color: 'inherit',
-    textDecoration: 'none',
-    typography: 'h6',
-    '&:hover': {
-        color: 'secondary.main',
-    },
-    '&.active': {
-        color: 'secondary.main',
-    },
-};
-
 export default function HeaderDesktopMidMenu({menu, navStyles}: Props){
     const dispatch = useAppDispatch();
 

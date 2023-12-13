@@ -1,5 +1,6 @@
 namespace API.RequestHelpers
 {
+    // Represents metadata information for paginated results
     public class MetaData
     {
         public int CurrentPage { get; set; }

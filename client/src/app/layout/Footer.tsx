@@ -23,7 +23,11 @@ export default function Footer() {
         }}
       >
         <img src='/images/logo.png' style={{ width: 200, marginLeft: 0 }} />
-        <Typography variant="body2" color="text.secondary" sx={{ width: '100%', mt: 1 }}>
+        <Typography 
+          variant="body2" 
+          color="text.secondary" 
+          sx={{ width: '100%', mt: 1 }}
+        >
           This website is a creative project by Rizka Auliarahmi, developed with .NET, React, and TypeScript to show web development skills.
         </Typography>
       </Box>

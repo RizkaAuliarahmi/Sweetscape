@@ -35,13 +35,24 @@ export default function Catalog() {
   return (
     <Grid container spacing={4}>
       {isMobile ? 
-        <CatalogExtensionsMobile sortOptions={sortOptions} filterOptions={types}/> 
+        <CatalogExtensionsMobile 
+          sortOptions={sortOptions} 
+          filterOptions={types}
+        /> 
       : 
-        <CatalogExtensionsDekstop sortOptions={sortOptions} filterOptions={types}/>
+        <CatalogExtensionsDekstop 
+        sortOptions={sortOptions} 
+        filterOptions={types}
+      />
       }
       <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
       {isProductListEmpty ? (
-          <Typography variant="h5" color="textSecondary" align="center" mt={4}>
+          <Typography 
+            variant="h5" 
+            color="textSecondary" 
+            align="center" 
+            mt={4}
+          >
             Product not found.
           </Typography>
         ) : (

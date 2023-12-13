@@ -4,19 +4,24 @@ import { PaginatedResponse } from "../models/pagination";
 import { router } from "../router/Routes";
 import { store } from "../store/ConfigureStore";
 
+// Function to simulate a delay
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500))
 
+// Axios global configuration
 axios.defaults.baseURL = 'http://localhost:5555/api/';
 axios.defaults.withCredentials = true;
 
+// Function to extract response data
 const responseBody = (response: AxiosResponse) => response.data;
 
+// Axios request interceptor for adding authentication token to headers
 axios.interceptors.request.use(config => {
     const token = store.getState().account.user?.token;
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
 })
 
+// Axios response interceptor for handling common response behaviors
 axios.interceptors.response.use(async response => {
     await sleep();
     const pagination = response.headers['pagination'];
@@ -53,6 +58,7 @@ axios.interceptors.response.use(async response => {
     return Promise.reject(error.response);
 })
 
+// Object containing common HTTP request functions
 const requests = {
     get: (url: string, params?: URLSearchParams) => axios.get(url, {params}).then(responseBody),
     post: (url: string, body: {}) => axios.post(url, body).then(responseBody),

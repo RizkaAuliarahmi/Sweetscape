@@ -9,7 +9,8 @@ interface Props {
 export default function BasketSummary({subtotal}: Props) {
     const { basket } = useAppSelector(state => state.basket);
     if (subtotal === undefined) 
-        subtotal = basket?.items.reduce((sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
+        subtotal = basket?.items.reduce(
+            (sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
     const deliveryFee = subtotal > 100000 ? 0 : 10000;
 
     return (
@@ -19,19 +20,30 @@ export default function BasketSummary({subtotal}: Props) {
                     <TableBody>
                         <TableRow>
                             <TableCell colSpan={2}>Subtotal</TableCell>
-                            <TableCell align="right">{currencyFormat(subtotal)}</TableCell>
+                            <TableCell align="right">
+                                {currencyFormat(subtotal)}
+                            </TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell colSpan={2}>Delivery fee*</TableCell>
-                            <TableCell align="right">{currencyFormat(deliveryFee)}</TableCell>
+                            <TableCell align="right">
+                                {currencyFormat(deliveryFee)}
+                            </TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell colSpan={2}>Total</TableCell>
-                            <TableCell align="right">{currencyFormat(subtotal + deliveryFee)}</TableCell>
+                            <TableCell align="right">
+                                {currencyFormat(subtotal + deliveryFee)}
+                            </TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell colSpan={3} style={{ whiteSpace: 'nowrap' }}>
-                                <span style={{ fontStyle: 'italic' }}>*Orders over Rp. 100.000 qualify for free delivery</span>
+                            <TableCell 
+                                colSpan={3} 
+                                style={{ whiteSpace: 'nowrap' }}
+                            >
+                                <span style={{ fontStyle: 'italic' }}>
+                                    *Orders over Rp. 100.000 qualify for free delivery
+                                </span>
                             </TableCell>
                         </TableRow>
                     </TableBody>

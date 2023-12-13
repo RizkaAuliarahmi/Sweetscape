@@ -5,9 +5,10 @@ export interface MetaData {
     totalCount: number;
 }
 
+// Kelas untuk merepresentasikan respons paginasi yang mengandung data dan metadata
 export class PaginatedResponse<T> {
-    items: T;
-    metaData: MetaData;
+    items: T; // Data (item atau entitas) dalam respons
+    metaData: MetaData; // Metadata paginasi terkait respons
 
     constructor(items: T, metaData: MetaData) {
         this.items = items;

@@ -30,8 +30,15 @@ export default function AppSlider({ products }: Props) {
   return (
       <Slider {...settings} >
         {products.map((product, index) => (
-          <Card key={index} sx={{ height: 360,  img: {  height: '100%', width: '100%'}, }}>
-            <img src={product.pictureUrl} alt={product.name} onClick={() => handleImageClick(product.id)}/>
+          <Card 
+            key={index} 
+            sx={{ height: 360,  img: {  height: '100%', width: '100%'}, }}
+          >
+            <img 
+              src={product.pictureUrl} 
+              alt={product.name} 
+              onClick={() => handleImageClick(product.id)}
+            />
           </Card>
         ))}
       </Slider>

@@ -1,14 +1,17 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { Basket } from "../models/basket";
 
+// Interface untuk nilai yang akan disediakan oleh context
 interface StoreContextValue {
     basket: Basket | null;
     setBasket: (basket: Basket) => void;
     removeItem: (productId: number, quantity: number) => void;
 }
 
+// Membuat context dengan menggunakan Context API dari React
 export const StoreContext = createContext<StoreContextValue | undefined>(undefined);
 
+// Hook untuk menggunakan nilai dari StoreContext
 export function useStoreContext() {
     let context = useContext(StoreContext);
 
@@ -18,9 +21,11 @@ export function useStoreContext() {
     return context;
 }
 
+// Komponen provider yang menggunakan useState untuk mengelola state keranjang belanja
 export function StoreProvider({children}: PropsWithChildren<any>) {
     const [basket, setBasket] = useState<Basket | null>(null);
 
+    // Fungsi untuk menghapus item dari keranjang belanja
     function removeItem(productId: number, quantity: number) {
         if (!basket) return;
         const items = [...basket.items] //new array of item
@@ -34,6 +39,7 @@ export function StoreProvider({children}: PropsWithChildren<any>) {
         }
     }
 
+    // Menyediakan nilai dan fungsi ke dalam context
     return (
         <StoreContext.Provider value={{basket, setBasket, removeItem}}>
             {children}

@@ -1,22 +1,21 @@
-import { FormControl, InputLabel, MenuItem, Select, IconButton, Typography } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { FormControl, InputLabel, MenuItem, Select, IconButton } from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
-import React, { useState } from "react";
+import { useState } from "react";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-interface DropdownProps {
+interface Props {
   options: any[];
   selectedOptions?: any[];
   onChange: (selectedOptions: any[]) => void;
   label?: string;
 }
 
-export default function Dropdown({
-  options,
-  selectedOptions,
-  onChange,
-  label,
-}: DropdownProps) {
+export default function DropdownFilter({ 
+  options, 
+  selectedOptions, 
+  onChange, 
+  label, 
+}: Props) {
   const [selectedItems, setSelectedItems] = useState(selectedOptions || []);
 
   const handleDelete = (item: any) => {
@@ -41,7 +40,14 @@ export default function Dropdown({
         renderValue={(selected) => (
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {(selected as any[]).map((value) => (
-              <div key={value} style={{ display: "flex", alignItems: "center", marginRight: 8 }}>
+              <div 
+                key={value} 
+                style={{ 
+                  display: "flex", 
+                  alignItems: "center", 
+                  marginRight: 8 
+                  }}
+              >
                 <span style={{ marginRight: 8 }}>{value}</span>
               </div>
             ))}
@@ -49,7 +55,15 @@ export default function Dropdown({
         )}
       >
         {options.map((option) => (
-          <MenuItem key={option} value={option} style={{ backgroundColor: selectedItems.includes(option) ? '#fff4e6' : 'transparent', display: "flex", justifyContent: "space-between" }}>
+          <MenuItem 
+            key={option} 
+            value={option} 
+            style={{ 
+              backgroundColor: selectedItems.includes(option) ? '#fff4e6' : 'transparent', 
+              display: "flex", 
+              justifyContent: "space-between" 
+              }}
+          >
             <>
               <span>{option}</span>
               {selectedItems.includes(option) && (

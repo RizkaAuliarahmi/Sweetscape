@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.RequestHelpers
 {
+    // Represents a paginated list of items with metadata
     public class PagedList<T> : List<T>
     {
         public PagedList(List<T> items, int count, int pageNumber, int pageSize)
@@ -18,6 +19,7 @@ namespace API.RequestHelpers
 
         public MetaData MetaData { get; set; }
 
+        // Converts an IQueryable to a PagedList based on page number and page size
         public static async Task<PagedList<T>> ToPagedList(IQueryable<T> query, 
             int pageNumber, int pageSize)
         {

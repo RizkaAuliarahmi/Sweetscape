@@ -42,14 +42,18 @@ export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
             >
                 {midMenu.map(({ title, path }) => (
                     <>
-                        <MenuItem component={Link} to={path}>{title}</MenuItem>
+                        <MenuItem component={Link} to={path}>
+                            {title}
+                        </MenuItem>
                     </>
                 ))}
                 <Divider />
                 <MenuItem component={Link} to='/basket'>My basket</MenuItem>
                 {user ? (
                     [[
-                        <MenuItem component={Link} to='/orders'>My orders</MenuItem>,
+                        <MenuItem component={Link} to='/orders'>
+                            My orders
+                        </MenuItem>,
                         <Divider />,
                         <MenuItem onClick={() => {
                             dispatch(signOut());
@@ -60,7 +64,9 @@ export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
                     <>
                         {rightMenu.map(({ title, path }) => (
                             [[
-                                <MenuItem component={Link} to={path}>{title}</MenuItem>
+                                <MenuItem component={Link} to={path}>
+                                    {title}
+                                </MenuItem>
                             ]]
                         ))}
                     </>
