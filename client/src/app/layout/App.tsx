@@ -1,4 +1,4 @@
-import { Container, CssBaseline, ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material";
+import { Container, CssBaseline, ThemeProvider, } from "@mui/material";
 import Header from "./Header/Header";
 import { useCallback, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
@@ -11,11 +11,15 @@ import { fetchCurrentUser } from "../../features/account/accountSlice";
 import Footer from "./Footer";
 import { ScrollToTop } from "../components/ScrollToTop";
 import HomePage from "../../features/Home/HomePage";
+import { createCustomTheme } from "../../features/theme";
+import { Theme } from "@mui/material";
 
 function App() {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const [darkMode, setDarkMode] = useState(false);
+  const palleteType = darkMode ? 'dark' : 'light';
 
   const initApp = useCallback(async () => {
     try {
@@ -24,45 +28,37 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-  }, [dispatch])
+  }, [dispatch]);
+
+  const setThemeMode = () => {
+    const storedDarkMode = localStorage.getItem('darkMode');
+    if (storedDarkMode !== null) {
+      setDarkMode(JSON.parse(storedDarkMode));
+    }
+  };
 
   useEffect(() => {
+    setThemeMode();
     initApp().then(() => setLoading(false));
-  }, [initApp])
+  }, [initApp]);
 
-  const theme = responsiveFontSizes(createTheme({
-    palette:{
-        primary: {
-          main: '#d3979f',
-          dark: '#b44b59',
-        },
-        secondary: {
-          main: '#fff4e6',
-        },
-      },
-      typography: {
-        allVariants: {
-          color: 'black',
-          fontFamily: 'Satoshi-Medium',
-        },
-        body1: {
-          fontSize: '1.2rem',
-        },
-        body2: {
-          fontSize: '1.2rem',
-        },
-      },
-}))
+  const theme: Theme = createCustomTheme(palleteType);
 
-if (loading) return <LoadingComponent message="Initializing app..." />
+  const handleThemeChange = () => {
+    const newDarkMode = !darkMode;
+    localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+    setDarkMode(newDarkMode);
+  };
+
+  if (loading) return <LoadingComponent message="Initializing app..." />;
 
   return (
     <ThemeProvider theme={theme}>
       <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
       <CssBaseline />
-      <Header />
-       <ScrollToTop />
-      {location.pathname === '/' ? <HomePage /> :
+      <Header darkMode={darkMode} handleThemeChange={handleThemeChange} palleteType={palleteType} />
+      <ScrollToTop />
+      {location.pathname === '/' ? <HomePage palleteType={palleteType}/> :
         <Container sx={{ mt: 4, mb: 20 }}>
           <Outlet />
         </Container>
@@ -71,5 +67,5 @@ if (loading) return <LoadingComponent message="Initializing app..." />
     </ThemeProvider>
   );
 }
-//outlet change depends on route
+
 export default App;

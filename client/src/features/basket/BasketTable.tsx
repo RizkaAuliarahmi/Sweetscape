@@ -77,9 +77,14 @@ export default function BasketTable({items, isBasket = true}: Props){
                   <TableCell align="right">
                     <LoadingButton
                       loading={status === 'pendingRemoveItem' + item.productId + 'del'}
-                      onClick={() => dispatch(removeBasketItemAsync({
-                        productId: item.productId, quantity: item.quantity, name: 'del'
-                      }))}
+                      onClick={() => {
+                        const shouldDelete = window.confirm("Are you sure you want to delete this item?");
+                        if (shouldDelete) {
+                          dispatch(removeBasketItemAsync({
+                            productId: item.productId, quantity: item.quantity, name: 'del'
+                          }));
+                        }
+                      }}
                       color='error'
                     >
                       <Delete />

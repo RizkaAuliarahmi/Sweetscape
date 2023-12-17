@@ -16,7 +16,7 @@ export default function ProductCard({product}: Props) {
             to={`/catalog/${product.id}`} 
             style={{ 
               textDecoration: "none", 
-              color: 'black', 
+              color: 'inherit', 
               fontSize: 'large'
             }}
           >

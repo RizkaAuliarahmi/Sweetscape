@@ -9,8 +9,13 @@ import LoadingComponent from "../../app/layout/LoadingComponent";
 import Banner from "./Banner";
 import ProductDescription from "./ProductDescription";
 
+interface Props {
+  palleteType?: string;
+}
+
 const bannerContent = {
-  bannerImage: "/images/home-bg.png",
+  bannerImageLight: "/images/light-bg-home.png",
+  bannerImageDark: "/images/dark-bg-home.png",
   bannerText: "Sweetest Choice",
   contentText: "For Sweet Tooth",
 };
@@ -20,7 +25,7 @@ const productDescription = {
   description: "Our latest collection features an array of treats—Strawberry Donut, Macaroon, Slice Cake, and Cupcake—all infused with the delightful essence of strawberries. Elevate your moments of joy and indulge in the richness of the season with these delectable creations. Treat yourself to these delightful creations.",
 }
 
-export default function HomePage() {
+export default function HomePage({ palleteType }: Props ) {
   const [newProducts, setNewProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [productCategories, setProductCategories] = useState([]);
@@ -42,27 +47,29 @@ export default function HomePage() {
   if (loading) return <LoadingComponent message="Loading..." />
 
   return (
-    <Grid container rowSpacing={2}>
+    <Grid container rowSpacing={6} bgcolor="inherit">
       <Grid item xs={12} >
-        <Banner bannerContent={bannerContent} />
+        <Banner bannerContent={bannerContent} palleteType={palleteType} />
       </Grid>
       <Grid item xs={12} sm={12} md={7} lg={7} xl={7} sx={{
           borderLeft: { 
-            xs: '8px solid #ffff', 
-            md: '12px solid #ffff', 
-            lg: '72px solid #ffff' 
+            xs: '8px solid transparent', 
+            md: '12px solid transparent', 
+            lg: '72px solid transparent' 
           },
           padding: 2,
+          
         }}>
           <AppSlider products={newProducts} />
       </Grid>
       <Grid item xs={12} sm={12} md={5} lg={5} xl={5} sx={{
           borderRight: { 
-            xs: '8px solid #ffff', 
-            md: '12px solid #ffff', 
-            lg: '72px solid #ffff' 
+            xs: '8px solid transparent', 
+            md: '12px solid transparent', 
+            lg: '72px solid transparent' 
           },
           padding: 2,
+          mb: 8,
         }}>
         <ProductDescription productDescription={productDescription} />
       </Grid>
@@ -79,7 +86,7 @@ export default function HomePage() {
         <Typography 
           variant="h4" 
           color="white" 
-          sx={{ pt: 2, textAlign: 'center'}}
+          sx={{  textAlign: 'center'}}
         >
           Treat Yourself to Our Sweet Variety
         </Typography>

@@ -8,10 +8,11 @@ interface Props {
 
 const BoxStyles = {
   cursor: "pointer",
-  border: "1px solid black",
+  border: "1px solid pink",
   borderRadius: "4px",
   padding: "8px",
   textAlign: "center",
+  '&:hover': { backgroundColor: 'secondary.main' }
 };
 
 export default function AppBox({ selected, onClick, label }: Props) {
@@ -20,8 +21,8 @@ export default function AppBox({ selected, onClick, label }: Props) {
       onClick={onClick}
       sx={{
         ...BoxStyles,
-        backgroundColor: selected ? "#d3979f" : "white",
-        color: selected ? "#ffffff" : "inherit",
+        backgroundColor: selected ? "#d3979f" : "inherit",
+        color: "inherit",
         flex: 1,
       }}
     >

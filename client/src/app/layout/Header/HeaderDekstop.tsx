@@ -1,4 +1,4 @@
-import { AppBar, Box, Toolbar } from "@mui/material";
+import { AppBar, Box, Switch, Toolbar } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HeaderDekstopMidMenu from "./HeaderDekstopMidMenu";
@@ -8,6 +8,9 @@ import HeaderLogo from "./HeaderLogo";
 interface Props {
     midMenu: any[];
     rightMenu: any[];
+    darkMode: boolean;
+    handleThemeChange: () => void;
+    palleteType?: string;
 }
 
 const navStyles = {
@@ -15,14 +18,14 @@ const navStyles = {
     textDecoration: 'none',
     typography: 'h6',
     '&:hover': {
-        color: 'secondary.main',
+        color: 'secondary.dark',
     },
     '&.active': {
-        color: 'secondary.main',
+        color: 'secondary.dark',
     },
 };
 
-export default function HeaderDekstop({midMenu, rightMenu}: Props) {
+export default function HeaderDekstop({ handleThemeChange, darkMode, midMenu, rightMenu, palleteType }: Props) {
     const [showScrollHeader, setShowScrollHeader] = useState(false);
     const location = useLocation();
 
@@ -50,6 +53,7 @@ export default function HeaderDekstop({midMenu, rightMenu}: Props) {
           };
         }
     };
+    
 
     return (
         <>
@@ -60,7 +64,7 @@ export default function HeaderDekstop({midMenu, rightMenu}: Props) {
                         display: 'flex',
                         zIndex: 1000, 
                         boxShadow: 'none', 
-                        background: `url('/images/bg-header.png')`, 
+                        background: palleteType === 'light' ? `url('/images/bg-header.png')` : 'black', 
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
@@ -68,10 +72,36 @@ export default function HeaderDekstop({midMenu, rightMenu}: Props) {
                     <Toolbar 
                         sx={{ 
                             display: 'flex', 
-                            flexDirection: 'column', 
+                            flexDirection: 'row', 
                             alignItems: 'center'
                         }}
                     >
+                        <Box
+                            display="flex" 
+                            sx={{
+                                marginRight: 'auto', 
+                                height: 'fit-content', 
+                                mt: 2 
+                            }}
+                        >
+                            <Switch
+                                checked={darkMode}
+                                onChange={handleThemeChange}
+                                color="primary"
+                                inputProps={{ 'aria-label': 'toggle dark mode' }}
+                                sx={{
+                                    '& .MuiSwitch-thumb': {
+                                        backgroundColor: darkMode ? '#f8d151' : '#ffff',
+                                        backgroundImage: darkMode ? 'url(/images/light.png)' : 'url(/images/dark.png)',
+                                        backgroundSize: 'cover',
+                                    },
+                                    '& .Mui-checked': {
+                                        backgroundColor: darkMode ? '#ffd43b' : '#65a5f2',
+                                        // backgroundImage: darkMode ? 'url(/images/light.png)' : 'url(/images/light.png)',
+                                    },
+                                }}
+                            />
+                        </Box>
                         <Box 
                             display="flex" 
                             sx={{

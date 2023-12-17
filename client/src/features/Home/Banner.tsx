@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 
 interface Props {
   bannerContent: {
-    bannerImage: string;
+    bannerImageLight: string;
+    bannerImageDark: string;
     bannerText: string;
     contentText: string;
   };
+  palleteType?: string;
 }
 
 
-export default function Banner({ bannerContent }: Props) {
+export default function Banner({ bannerContent, palleteType }: Props) {
   const isMobile = useMediaQuery('(max-width: 1000px)');
 
   return (
@@ -19,7 +21,7 @@ export default function Banner({ bannerContent }: Props) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundImage: `url(${bannerContent.bannerImage})`,
+        backgroundImage: palleteType === 'light' ? `url(${bannerContent.bannerImageLight})` : `url(${bannerContent.bannerImageDark})`,
         backgroundSize: 'cover',
         minHeight: isMobile ? '30vh' : '1024px',
       }}
