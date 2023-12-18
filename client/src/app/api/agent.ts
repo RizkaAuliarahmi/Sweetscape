@@ -8,7 +8,7 @@ import { store } from "../store/ConfigureStore";
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500))
 
 // Axios global configuration
-axios.defaults.baseURL = 'http://localhost:5555/api/';
+axios.defaults.baseURL = 'http://localhost:5000/api/';
 axios.defaults.withCredentials = true;
 
 // Function to extract response data
