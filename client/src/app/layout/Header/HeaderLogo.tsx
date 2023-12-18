@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 interface Props {
     sx?: React.CSSProperties;
-    variant: string;
-    letterSpacing: number; 
+    variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" ;
+    letterSpacing: string | number;
 }
 
 export default function HeaderLogo({sx, variant, letterSpacing } : Props) {
@@ -20,7 +20,7 @@ export default function HeaderLogo({sx, variant, letterSpacing } : Props) {
                 style={{ 
                     color: '#fff4e6', 
                     fontFamily: 'Great Vibes', 
-                    letterSpacing: {letterSpacing} }}
+                    letterSpacing: letterSpacing }}
             >
                 Sweetscape
             </Typography>
