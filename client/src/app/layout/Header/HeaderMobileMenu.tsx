@@ -5,6 +5,7 @@ import { clearBasket } from "../../../features/basket/basketSlice";
 import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/ConfigureStore";
 import MenuIcon from '@mui/icons-material/Menu';
+import { setProductParams } from "../../../features/catalog/catalogSlice";
 
 interface Props {
     midMenu: any[];
@@ -42,7 +43,9 @@ export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
             >
                 {midMenu.map(({ title, path }) => (
                     [[
-                        <MenuItem component={Link} to={path}>
+                        <MenuItem component={Link} to={path} onClick={() => { 
+                            dispatch(setProductParams({ types: [] }));
+                        }}>
                             {title}
                         </MenuItem>
                     ]]
