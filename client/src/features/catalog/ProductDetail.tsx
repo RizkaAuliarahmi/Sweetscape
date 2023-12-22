@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../app/store/ConfigureStore";
 import { addBasketItemAsync, removeBasketItemAsync } from "../basket/basketSlice";
 import { fetchProductAsync, productSelector } from "./catalogSlice";
 import { currencyFormat } from "../../app/util/utils";
+import { toast } from "react-toastify";
 
 export default function ProductDetails() {
     const {basket, status} = useAppSelector(state => state.basket);
@@ -25,6 +26,7 @@ export default function ProductDetails() {
     }, [id, item, product, dispatch])
 
     function handleInputChange(event: any) {
+
         if (event.target.value >= 0) {
             setQuantity(parseInt(event.target.value));
         }
@@ -91,11 +93,12 @@ export default function ProductDetails() {
                             label='Quantity in Cart'
                             fullWidth
                             value={quantity}
+                            disabled={( item?.quantity! <= quantity)}
                         />
                     </Grid>
                     <Grid item xs={12} sm={isMobile ? 12 : 6}>
                         <LoadingButton
-                            disabled={(item?.quantity === quantity) || (!item && quantity === 0)}
+                            disabled={(quantity > product.quantityInStock!) || (!item && quantity === 0 || (item?.quantity === quantity ))}
                             loading={status.includes('pending')}
                             onClick={handleUpdateCart}
                             sx={{ height: '55px' }}

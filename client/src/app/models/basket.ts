@@ -9,7 +9,6 @@ export interface Basket {
     name: string;
     price: number;
     pictureUrl: string;
-    type: string;
     quantity: number;
     productCategoryId: number;
     productCategoryName: string;

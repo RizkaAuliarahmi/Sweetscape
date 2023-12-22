@@ -12,15 +12,21 @@ import Login from "../../features/account/Login";
 import Register from "../../features/account/Register";
 import RequireAuth from "./RequireAuth";
 import Orders from "../../features/orders/OrdersPage";
+import Inventory from "../../features/admin/Inventory";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <App/>,
         children: [
-            {element: <RequireAuth/>, children: [
-                {path: 'checkout', element: <CheckoutPage/>},
-                {path: 'orders', element: <Orders />}
+            // member routes
+            {element: <RequireAuth />, children: [
+                {path: 'checkout', element: <CheckoutPage />},
+                {path: 'orders', element: <Orders />},
+            ]},
+            // admin routes
+            {element: <RequireAuth roles={['Admin']} />, children: [
+                {path: 'inventory', element: <Inventory />},
             ]},
             {path: '', element: <HomePage/>},
             {path: 'catalog', element: <Catalog/>},

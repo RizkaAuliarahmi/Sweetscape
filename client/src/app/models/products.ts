@@ -5,9 +5,8 @@ export interface Product {
     shelfLife: string;
     price: number;
     pictureUrl: string;
-    type?: string;
     quantityInStock?: number;
-    date: string;
+    date: Date;
     productCategoryId: number;
     productCategory: ProductCategory;
 }

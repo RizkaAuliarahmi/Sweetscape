@@ -1,7 +1,7 @@
 import { List, ListItem } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { setProductParams } from "../../../features/catalog/catalogSlice";
-import { useAppDispatch } from "../../store/ConfigureStore";
+import { useAppDispatch, useAppSelector } from "../../store/ConfigureStore";
 
 interface Props {
     menu: any[];
@@ -10,6 +10,7 @@ interface Props {
 
 export default function HeaderDesktopMidMenu({menu, navStyles}: Props){
     const dispatch = useAppDispatch();
+    const { user } = useAppSelector((state) => state.account);
 
     const handleCatalogClick = () => {
         dispatch(setProductParams({ types: [] }));
@@ -28,6 +29,15 @@ export default function HeaderDesktopMidMenu({menu, navStyles}: Props){
                     {title.toUpperCase()}
                 </ListItem>
             ))}
+            { user && user.roles?.includes('Admin') &&
+                <ListItem
+                    component={NavLink}
+                    to={'/inventory'}
+                    sx={{...navStyles, whiteSpace: 'nowrap'}}
+                >
+                    INVENTORY
+                </ListItem>
+            }
         </List>
 
     )

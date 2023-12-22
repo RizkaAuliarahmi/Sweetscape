@@ -18,7 +18,6 @@ namespace API.Extensions
                     Name = item.Product.Name,
                     Price = item.Product.Price,
                     PictureUrl = item.Product.PictureUrl,
-                    Type = item.Product.Type,
                     Quantity = item.Quantity
                 }).ToList()
             };

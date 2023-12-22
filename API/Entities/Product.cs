@@ -8,10 +8,10 @@ namespace API.Entities
         public string ShelfLife { get; set; }
         public long Price { get; set; }
         public string  PictureUrl { get; set; }
-        public string Type { get; set; }
         public int QuantityInStock { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public int ProductCategoryId { get; set; }
         public ProductCategory ProductCategory { get; set; }
+        public string PublicId { get; set; }
     }
 }

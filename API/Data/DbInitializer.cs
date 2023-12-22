@@ -68,7 +68,7 @@ namespace API.Data
                     PictureUrl = "/images/products/cupcake (2).jpg",
                     ProductCategory = productCategory[0],
                     QuantityInStock = 33,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
                 new Product
                 {
@@ -79,7 +79,7 @@ namespace API.Data
                     PictureUrl = "/images/products/cupcake (1).jpg",
                     ProductCategory = productCategory[0],
                     QuantityInStock = 28,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
                 new Product
                 {
@@ -90,7 +90,7 @@ namespace API.Data
                     PictureUrl = "/images/products/cupcake (3).jpg",
                     ProductCategory = productCategory[0],
                     QuantityInStock = 28,
-                    Date = "2023-10-27"
+                    Date = new DateTime(2023, 10, 27),
                 },
                 new Product
                 {
@@ -102,7 +102,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (8).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 		        new Product
                 {
@@ -114,7 +114,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (10).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 		        new Product
                 {
@@ -126,7 +126,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (5).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 		        new Product
                 {
@@ -138,7 +138,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (4).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 		        new Product
                 {
@@ -150,7 +150,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (2).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 	        	new Product
                 {
@@ -162,7 +162,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (7).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 	        	new Product
                 {
@@ -174,7 +174,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (6).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 	        	new Product
                 {
@@ -186,7 +186,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (1).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 	        	new Product
                 {
@@ -198,7 +198,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (3).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
 		        new Product
                 {
@@ -210,7 +210,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (9).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
                 new Product
                 {
@@ -222,43 +222,7 @@ namespace API.Data
                     PictureUrl = "/images/products/donut (11).jpg",
                     ProductCategory = productCategory[1],
                     QuantityInStock = 100,
-                    Date = "2023-10-27"
-                },
-                new Product
-                {
-                    Name = "Colorful Sweet Macaroon",
-                    AllergenInformation =
-                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
-                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
-                    Price = 154000,
-                    PictureUrl = "/images/products/macaroon (1).jpg",
-                    ProductCategory = productCategory[3],
-                    QuantityInStock = 20,
-                    Date = "2022-10-27"
-                },
-                new Product
-                {
-                    Name = "Rainbow Mini Macaroon",
-                    AllergenInformation =
-                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
-                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
-                    Price = 59000,
-                    PictureUrl = "/images/products/macaroon (2).jpg",
-                    ProductCategory = productCategory[3],
-                    QuantityInStock = 16,
-                    Date = "2022-10-27"
-                },
-                new Product
-                {
-                    Name = "Strawberry Mini Macaroon",
-                    AllergenInformation =
-                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
-                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
-                    Price = 200000,
-                    PictureUrl = "/images/products/macaroon (3).jpg",
-                    ProductCategory = productCategory[3],
-                    QuantityInStock = 19,
-                    Date = "2023-10-27"
+                    Date = new DateTime(2023, 10, 27),
                 },
                 new Product
                 {
@@ -270,7 +234,7 @@ namespace API.Data
                     PictureUrl = "/images/products/slice cake (2).jpg",
                     ProductCategory = productCategory[2],
                     QuantityInStock = 84,
-                    Date = "2023-10-27"
+                    Date = new DateTime(2023, 10, 27),
                 },
                 new Product
                 {
@@ -282,7 +246,7 @@ namespace API.Data
                     PictureUrl = "/images/products/slice cake (3).jpg",
                     ProductCategory = productCategory[2],
                     QuantityInStock = 84,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
                 new Product
                 {
@@ -293,7 +257,7 @@ namespace API.Data
                     PictureUrl = "/images/products/slice cake (1).jpg",
                     ProductCategory = productCategory[2],
                     QuantityInStock = 84,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
                 new Product
                 {
@@ -305,7 +269,7 @@ namespace API.Data
                     PictureUrl = "/images/products/slice cake (4).jpg",
                     ProductCategory = productCategory[2],
                     QuantityInStock = 84,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
                 },
                 new Product
                 {
@@ -317,7 +281,43 @@ namespace API.Data
                     PictureUrl = "/images/products/slice cake (5).jpg",
                     ProductCategory = productCategory[2],
                     QuantityInStock = 84,
-                    Date = "2022-10-27"
+                    Date = new DateTime(2022, 10, 27),
+                },
+                new Product
+                {
+                    Name = "Colorful Sweet Macaroon",
+                    AllergenInformation =
+                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
+                    Price = 154000,
+                    PictureUrl = "/images/products/macaroon (1).jpg",
+                    ProductCategory = productCategory[3],
+                    QuantityInStock = 20,
+                    Date = new DateTime(2022, 10, 27),
+                },
+                new Product
+                {
+                    Name = "Rainbow Mini Macaroon",
+                    AllergenInformation =
+                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
+                    Price = 59000,
+                    PictureUrl = "/images/products/macaroon (2).jpg",
+                    ProductCategory = productCategory[3],
+                    QuantityInStock = 16,
+                    Date = new DateTime(2022, 10, 27),
+                },
+                new Product
+                {
+                    Name = "Strawberry Mini Macaroon",
+                    AllergenInformation =
+                        "Almonds, eggs, and other potential allergens; individuals with allergies should review the ingredient list carefully.",
+                    ShelfLife = "Enjoy the delightful Macaroons within two weeks of purchase when stored in an airtight container in a cool, dry place; follow storage instructions for optimal freshness",
+                    Price = 200000,
+                    PictureUrl = "/images/products/macaroon (3).jpg",
+                    ProductCategory = productCategory[3],
+                    QuantityInStock = 19,
+                    Date = new DateTime(2023, 10, 27),
                 },
             };
             
