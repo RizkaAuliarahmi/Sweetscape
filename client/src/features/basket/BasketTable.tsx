@@ -14,6 +14,18 @@ interface Props {
 export default function BasketTable({ items, isBasket = true }: Props) {
     const { status } = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
+
+    function handleAddItem(item: any) {
+        if (item.quantity < item.quantityInStock){
+            console.log("stok-qty"+item.quantityInStock+item.quantity);
+            dispatch(addBasketItemAsync({ productId: item.productId }));
+        } else {
+            window.alert("Out of stock!");
+        }
+    }
+
+
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -40,8 +52,8 @@ export default function BasketTable({ items, isBasket = true }: Props) {
                                 </Box>
                             </TableCell>
                             <TableCell align="center">
-                  {currencyFormat(item.price)}
-                </TableCell>
+                                {currencyFormat(item.price)}
+                            </TableCell>
                             <TableCell align="center">
                                 {isBasket &&
                                     <LoadingButton
@@ -56,30 +68,33 @@ export default function BasketTable({ items, isBasket = true }: Props) {
                                 {isBasket &&
                                     <LoadingButton
                                         loading={status === 'pendingAddItem' + item.productId}
-                                        onClick={() => dispatch(addBasketItemAsync({ productId: item.productId }))}
+                                        onClick={() => handleAddItem(item)}
                                         color='secondary'>
                                         <Add />
                                     </LoadingButton>}
                             </TableCell>
                             <TableCell align="right">
-                  {currencyFormat(item.price * item.quantity)}
-                </TableCell>
+                                {currencyFormat(item.price * item.quantity)}
+                            </TableCell>
                             {isBasket &&
                                 <TableCell align="right">
                                     <LoadingButton
-                      loading={status === 'pendingRemoveItem' + item.productId + 'del'}
-                      onClick={() => {
-                        const shouldDelete = window.confirm("Are you sure you want to delete this item?");
-                        if (shouldDelete) {
-                          dispatch(removeBasketItemAsync({
-                            productId: item.productId, quantity: item.quantity, name: 'del'
-                          }));
-                        }
-                      }}
-                      color='error'
-                    >
-                      <Delete />
-                    </LoadingButton>
+                                        loading={status === 'pendingRemoveItem' + item.productId + 'del'}
+                                        onClick={() => {
+                                            const shouldDelete = window
+                                                .confirm("Are you sure you want to delete this item?");
+                                            if (shouldDelete) {
+                                            dispatch(removeBasketItemAsync({
+                                                productId: item.productId, 
+                                                quantity: item.quantity, 
+                                                name: 'del'
+                                            }));
+                                            }
+                                        }}
+                                        color='error'
+                                    >
+                                        <Delete />
+                                    </LoadingButton>
                                 </TableCell>}
                         </TableRow>
                     ))}

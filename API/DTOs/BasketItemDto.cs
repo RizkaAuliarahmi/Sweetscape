@@ -7,5 +7,6 @@ namespace API.DTOs
         public long Price { get; set; }
         public string PictureUrl { get; set; }
         public int Quantity { get; set; }
+        public int QuantityInStock { get; set; }
     }
 }

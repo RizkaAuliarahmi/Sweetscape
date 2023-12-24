@@ -32,7 +32,7 @@ export default function AppSlider({ products }: Props) {
         {products.map((product, index) => (
           <Card 
             key={index} 
-            sx={{ height: 360,  img: {  height: '100%', width: '100%'}, }}
+            sx={{ height: 480,  img: {  height: '100%', width: '100%'}, }}
           >
             <img 
               src={product.pictureUrl} 

@@ -1,6 +1,6 @@
 import { List, ListItem } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { setProductParams } from "../../../features/catalog/catalogSlice";
+import { resetProductParams, setProductParams } from "../../../features/catalog/catalogSlice";
 import { useAppDispatch, useAppSelector } from "../../store/ConfigureStore";
 
 interface Props {
@@ -12,16 +12,17 @@ export default function HeaderDesktopMidMenu({menu, navStyles}: Props){
     const dispatch = useAppDispatch();
     const { user } = useAppSelector((state) => state.account);
 
-    const handleCatalogClick = () => {
+    const handleMenuClick = () => {
+        dispatch(resetProductParams());
         dispatch(setProductParams({ types: [] }));
-      };
+    };
 
     return (
         <List sx={{ display: 'flex'}}>
             {menu.map(({ title, path }) => (
                 <ListItem
                     component={NavLink}
-                    onClick={() => handleCatalogClick()}
+                    onClick={() => handleMenuClick()}
                     to={path}
                     key={path}
                     sx={{...navStyles, whiteSpace: 'nowrap'}}
@@ -32,6 +33,7 @@ export default function HeaderDesktopMidMenu({menu, navStyles}: Props){
             { user && user.roles?.includes('Admin') &&
                 <ListItem
                     component={NavLink}
+                    onClick={() => handleMenuClick()}
                     to={'/inventory'}
                     sx={{...navStyles, whiteSpace: 'nowrap'}}
                 >

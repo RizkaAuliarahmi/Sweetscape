@@ -10,6 +10,7 @@ export interface Basket {
     price: number;
     pictureUrl: string;
     quantity: number;
+    quantityInStock: number;
     productCategoryId: number;
     productCategoryName: string;
   }

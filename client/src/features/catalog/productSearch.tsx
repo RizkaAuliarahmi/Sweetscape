@@ -9,8 +9,14 @@ export default function ProductSearch() {
   const [searchTerm, setSearchTerm] = useState(productParams.searchTerm);
   const dispatch = useAppDispatch();
 
-  const debouncedSearch = (event: any) => {
-    dispatch(setProductParams({ searchTerm: event.target.value }));
+  let timeoutId: NodeJS.Timeout;
+
+  const debouncedSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      dispatch(setProductParams({ searchTerm: event.target.value }));
+    }, 300);
   };
 
   const handleClearClick = () => {

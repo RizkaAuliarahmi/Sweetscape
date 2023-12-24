@@ -5,7 +5,7 @@ import { clearBasket } from "../../../features/basket/basketSlice";
 import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/ConfigureStore";
 import MenuIcon from '@mui/icons-material/Menu';
-import { setProductParams } from "../../../features/catalog/catalogSlice";
+import { resetProductParams, setProductParams } from "../../../features/catalog/catalogSlice";
 
 interface Props {
     midMenu: any[];
@@ -24,6 +24,11 @@ export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleMenuClick = () => {
+        dispatch(resetProductParams());
+        dispatch(setProductParams({ types: [] }));
     };
 
     return (
@@ -45,11 +50,20 @@ export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
                     [[
                         <MenuItem component={Link} to={path} onClick={() => { 
                             dispatch(setProductParams({ types: [] }));
+                            dispatch(resetProductParams());
                         }}>
                             {title}
                         </MenuItem>
                     ]]
                 ))}
+                { user && user.roles?.includes('Admin') &&
+                    <MenuItem component={Link} to='/inventory' onClick={() => { 
+                            dispatch(setProductParams({ types: [] }));
+                            dispatch(resetProductParams());
+                        }}>
+                        Inventory
+                    </MenuItem>
+                }
                 <Divider />
                 <MenuItem component={Link} to='/basket'>My basket</MenuItem>
                 {user ? (

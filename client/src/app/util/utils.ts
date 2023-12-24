@@ -7,3 +7,4 @@ export function currencyFormat(amount: number){
 const formattedAmount = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   return `Rp. ${formattedAmount}`;
 }
+

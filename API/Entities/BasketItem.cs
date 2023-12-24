@@ -7,6 +7,7 @@ namespace API.Entities
     {
         public int Id { get; set; }
         public int Quantity { get; set; }
+        public int QuantityInStock { get; set; }
 
         //navigation properties
         public int ProductId { get; set; }
