@@ -26,11 +26,6 @@ export default function HeaderMobileMenu({midMenu, rightMenu}: Props) {
         setAnchorEl(null);
     };
 
-    const handleMenuClick = () => {
-        dispatch(resetProductParams());
-        dispatch(setProductParams({ types: [] }));
-    };
-
     return (
         <>
             <IconButton

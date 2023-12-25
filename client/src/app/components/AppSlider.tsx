@@ -43,4 +43,4 @@ export default function AppSlider({ products }: Props) {
         ))}
       </Slider>
   );
-};
+}

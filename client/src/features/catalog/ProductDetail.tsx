@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from "../../app/store/ConfigureStore";
 import { addBasketItemAsync, removeBasketItemAsync } from "../basket/basketSlice";
 import { fetchProductAsync, productSelector } from "./catalogSlice";
 import { currencyFormat } from "../../app/util/utils";
-import { toast } from "react-toastify";
 
 export default function ProductDetails() {
     const {basket, status} = useAppSelector(state => state.basket);
@@ -33,12 +32,13 @@ export default function ProductDetails() {
     }
 
     function handleUpdateCart() {
+        if (!product) return;
         if (!item || quantity > item.quantity) {
             const updatedQuantity = item ? quantity - item.quantity : quantity;
-            dispatch(addBasketItemAsync({productId: product?.id!, quantity: updatedQuantity}))
+            dispatch(addBasketItemAsync({productId: product.id, quantity: updatedQuantity}))
         } else {
             const updatedQuantity = item.quantity - quantity;
-            dispatch(removeBasketItemAsync({productId: product?.id!, quantity: updatedQuantity}))
+            dispatch(removeBasketItemAsync({productId: product.id, quantity: updatedQuantity}))
         }
     }
 
@@ -93,7 +93,7 @@ export default function ProductDetails() {
                             label='Quantity in Cart'
                             fullWidth
                             value={quantity}
-                            disabled={( item?.quantity! <= quantity)}
+                            disabled={item && item.quantity !== undefined && item.quantity <= quantity}
                         />
                     </Grid>
                     <Grid item xs={12} sm={isMobile ? 12 : 6}>

@@ -12,8 +12,9 @@ interface StoreContextValue {
 export const StoreContext = createContext<StoreContextValue | undefined>(undefined);
 
 // Hook untuk menggunakan nilai dari StoreContext
+// eslint-disable-next-line react-refresh/only-export-components
 export function useStoreContext() {
-    let context = useContext(StoreContext);
+    const context = useContext(StoreContext);
 
     if (context === undefined){
         throw Error('Oops - We do not seem to be inside the provider')

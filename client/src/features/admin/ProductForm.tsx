@@ -35,10 +35,8 @@ export default function ProductForm({ product, cancelEdit }: Props) {
     }, [product, reset, watchFile, isDirty])
 
     const handleDeleteImage = () => {
-        console.log("hapus y");
         setValue('file', null);
         setImg(false);
-  
     };
 
     async function handleSubmitData(data: FieldValues) {
@@ -82,27 +80,26 @@ export default function ProductForm({ product, cancelEdit }: Props) {
                         <AppTextInput multiline={true} rows={5} control={control} name='shelfLife' label='Shelf Life' />
                     </Grid>
                     <Grid item xs={12}>
-                    <Box display="flex" justifyContent="space-between" alignItems="center">
-                    {/* Conditionally render AppDropzone based on whether there is a product.pictureUrl */}
-                    { ((product?.pictureUrl === undefined) || (!img)) && <AppDropzone control={control} name="file" />}
-                    {watchFile ? (
-                        <div>
-                            <img src={watchFile.preview} alt="preview" style={{ maxHeight: 200 }} />
-                            <Button color="error" onClick={handleDeleteImage}>
-                                Remove
-                            </Button>
-                        </div>
-                    ) : (
-                        product?.pictureUrl && (img) && (
-                            <div>
-                                <img src={product?.pictureUrl} alt={product?.name} style={{ maxHeight: 200 }} />
-                                <Button color="error" onClick={handleDeleteImage}>
-                                    Remove
-                                </Button>
-                            </div>
-                        )
-                    )}
-                </Box>
+                        <Box display="flex" justifyContent="space-between" alignItems="center">
+                            { ((product?.pictureUrl === undefined) || (!img)) && <AppDropzone control={control} name="file" />}
+                            {watchFile ? (
+                                <div>
+                                    <img src={watchFile.preview} alt="preview" style={{ maxHeight: 200 }} />
+                                    <Button color="error" onClick={handleDeleteImage}>
+                                        Remove
+                                    </Button>
+                                </div>
+                            ) : (
+                                product?.pictureUrl && (img) && (
+                                    <div>
+                                        <img src={product?.pictureUrl} alt={product?.name} style={{ maxHeight: 200 }} />
+                                        <Button color="error" onClick={handleDeleteImage}>
+                                            Remove
+                                        </Button>
+                                    </div>
+                                )
+                            )}
+                        </Box>
                     </Grid>
                 </Grid>
                 <Box display='flex' justifyContent='space-between' sx={{mt: 3}}>

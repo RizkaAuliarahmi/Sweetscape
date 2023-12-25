@@ -5,12 +5,12 @@ import BasketSummary from "../basket/BasketSummary";
 import BasketTable from "../basket/BasketTable";
 
 interface Props {
-    order: Order;
+    order?: Order;
     setSelectedOrder: (id: number) => void;
 }
 
 export default function OrderDetailed({ order, setSelectedOrder }: Props) {
-    const subtotal = order.orderItems.reduce(
+    const subtotal = order?.orderItems.reduce(
         (sum, item) => sum + (item.quantity * item.price), 0) ?? 0;
     const isMobile = useMediaQuery('(max-width: 600px)');
 
@@ -24,7 +24,7 @@ export default function OrderDetailed({ order, setSelectedOrder }: Props) {
                     }} 
                     gutterBottom variant='h4'
                 >
-                    Order# {order.id} - {order.orderStatus}
+                    Order# {order?.id} - {order?.orderStatus}
                 </Typography>
                 <Button
                     onClick={() => setSelectedOrder(0)}
@@ -36,7 +36,7 @@ export default function OrderDetailed({ order, setSelectedOrder }: Props) {
                 </Button>
             </Box>
             <BasketTable 
-                items={order.orderItems as BasketItem[]} 
+                items={order?.orderItems as BasketItem[]} 
                 isBasket={false} 
             />
             { isMobile ? (

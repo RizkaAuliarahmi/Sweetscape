@@ -24,8 +24,6 @@ export default function BasketTable({ items, isBasket = true }: Props) {
         }
     }
 
-
-
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -69,7 +67,7 @@ export default function BasketTable({ items, isBasket = true }: Props) {
                                     <LoadingButton
                                         loading={status === 'pendingAddItem' + item.productId}
                                         onClick={() => handleAddItem(item)}
-                                        color='secondary'>
+                                        color='error'>
                                         <Add />
                                     </LoadingButton>}
                             </TableCell>

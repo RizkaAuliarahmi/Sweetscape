@@ -43,4 +43,4 @@ export default function HeaderDesktopMidMenu({menu, navStyles}: Props){
         </List>
 
     )
-};
+}

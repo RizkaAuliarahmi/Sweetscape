@@ -49,7 +49,7 @@ export default function CheckoutPage() {
     }, [methods])
 
     const handleNext = async (data: FieldValues) => {
-        const {paymentMethod, saveAddress, ...shippingAddress} = data;
+        const {saveAddress, ...shippingAddress} = data;
         if (activeStep === steps.length - 1) {
             setLoading(true);
             try {
