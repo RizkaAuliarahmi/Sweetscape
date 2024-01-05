@@ -49,7 +49,7 @@ Berikut adalah langkah-langkah untuk menjalankan proyek Sweetscape:
 1. **Clone Repositori**
 
     ```bash
-https://github.com/RizkaAuliarahmi/Sweetscape.git
+    https://github.com/RizkaAuliarahmi/Sweetscape.git
     cd sweetscape
     ```
 
