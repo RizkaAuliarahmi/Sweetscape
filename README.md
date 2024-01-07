@@ -57,7 +57,8 @@ Berikut adalah langkah-langkah untuk menjalankan proyek Sweetscape:
 
     ```bash
     cd api
-    dotnet watch run
+    dotnet restore
+    dotnet run
     ```
 
 3. **Setup React App**
