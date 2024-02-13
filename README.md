@@ -49,7 +49,7 @@ Berikut adalah langkah-langkah untuk menjalankan proyek Sweetscape:
 1. **Clone Repositori**
 
     ```bash
-    git clone https://github.com/username/sweetscape.git
+    https://github.com/RizkaAuliarahmi/Sweetscape.git
     cd sweetscape
     ```
 
@@ -57,7 +57,8 @@ Berikut adalah langkah-langkah untuk menjalankan proyek Sweetscape:
 
     ```bash
     cd api
-    dotnet watch run
+    dotnet restore
+    dotnet run
     ```
 
 3. **Setup React App**
