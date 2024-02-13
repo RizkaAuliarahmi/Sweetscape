@@ -11,13 +11,14 @@ namespace API.Services
         {
             var acc = new Account
             (
-                config["Cloudinary:CloudName"],
-                config["Cloudinary:ApiKey"],
-                config["Cloudinary:ApiSecret"]
+                "dohq01ipm",
+                "373582983783982",
+                "AVmhAW7sTxMcz62tiWfx4DJdd5c"
             );
 
             _cloudinary = new Cloudinary(acc);
         }
+
 
         public async Task<ImageUploadResult> AddImageAsync(IFormFile file)
         {

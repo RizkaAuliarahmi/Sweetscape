@@ -20,7 +20,7 @@ namespace API.DTOs
         [Required]
         public int QuantityInStock { get; set; }
 
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.UtcNow;
 
         [Required]
         public int ProductCategoryId { get; set; }

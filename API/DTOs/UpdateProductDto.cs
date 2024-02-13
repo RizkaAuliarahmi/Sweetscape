@@ -12,7 +12,7 @@ namespace API.DTOs
         public long Price { get; set; }
         public IFormFile  File { get; set; }
         public int QuantityInStock { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.UtcNow;
         public int ProductCategoryId { get; set; }
     }
 }

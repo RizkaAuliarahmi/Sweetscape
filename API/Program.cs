@@ -50,7 +50,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<StoreContext>(opt => 
 {
     // Configures the application to use SQLite
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 //add CORS support
@@ -102,6 +102,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseDefaultFiles(); //look for www root
+app.UseStaticFiles();
+
 app.UseCors(opt =>
 {
     // Configures CORS policies
@@ -115,6 +118,7 @@ app.UseAuthorization();
 
 // Maps controllers for handling requests
 app.MapControllers();
+app.MapFallbackToController("Index", "Fallback");
 
 var scope = app.Services.CreateScope();
 //hold of store context service
