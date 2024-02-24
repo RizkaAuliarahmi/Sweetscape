@@ -49,7 +49,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<StoreContext>(opt => 
 {
-    // Configures the application to use SQLite
+    // Configures the application to use database
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
